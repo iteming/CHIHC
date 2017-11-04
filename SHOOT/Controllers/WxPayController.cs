@@ -46,9 +46,6 @@ namespace SHOOT.Controllers
             RecordService RecSVC = new RecordService();
             Bis_Record recordEntity = new Bis_Record();
             ViewBag.tipStr = "微信支付正在处理...";
-
-            return View(recordEntity);
-
             if (!state.Contains("|"))
             {
                 // 订单消费

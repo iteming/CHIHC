@@ -16,7 +16,7 @@ namespace SHOOT.Utils
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             string returnURL = filterContext.HttpContext.Request.Url.AbsolutePath;
-            SessionTools.UserID = "99dc2d9c-e134-4cfc-a07e-0943698d899b";
+            //SessionTools.UserID = "99dc2d9c-e134-4cfc-a07e-0943698d899b";
             if (string.IsNullOrEmpty(SessionTools.UserID))
             {
                 if ("/" == returnURL || string.IsNullOrEmpty(returnURL))
