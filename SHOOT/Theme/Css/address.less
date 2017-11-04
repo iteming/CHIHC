@@ -1,0 +1,211 @@
+﻿@import "common.less";
+
+.head {
+    background: #fff;
+}
+
+.main {
+    /*列表*/
+    .addrs {
+        width: 100%;
+        margin: 0 auto;
+
+        .addr_list {
+            width: 100%;
+            margin: 0 auto;
+            height: auto;
+
+            li {
+                float: left;
+                width: 90%;
+                padding: 0 5%;
+                background: #fff;
+                position: relative;
+                margin-bottom: 0.85rem;
+
+                strong {
+                    width: 100%;
+                    line-height: 4rem;
+                    .fontsize(16px);
+                    font-weight: normal;
+                    display: block;
+
+                    span {
+                        float: right;
+                    }
+
+                    a {
+                        .font14;
+                        color: @fontCol6;
+                        padding-left: 2rem;
+                        position: relative;
+
+                        img {
+                            width: 2rem;
+                            height: 2rem;
+                            position: absolute;
+                            left: 0;
+                            top: 1rem;
+                        }
+
+                        i {
+                            width: 1.2rem;
+                            height: 1.2rem;
+                            position: absolute;
+                            left: 0;
+                            top: 0.1rem;
+                            border: 1px solid @fontCol5;
+                            border-radius: 50%;
+                        }
+                    }
+
+                        a.right {
+                            float: right;
+                            margin-left: 2rem;
+                        }
+
+                        a.on {
+                            color: @fontCol1;
+
+                            i {
+                                background: url(../../Images/selbtn.png) no-repeat;
+                                background-size: 1.2rem 1.2rem;
+                            }
+                        }
+                }
+
+                p {
+                    .font14;
+                    margin-bottom: 0.85rem;
+                }
+
+                strong.li_bottom {
+                    border-top: 1px solid @borderCol1;
+                }
+            }
+        }
+    }
+    /*编辑*/
+    .lis {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0 5%;
+        background: #fff;
+
+        >strong:last-child {
+            border-bottom: none;
+        }
+
+        .user_title {
+            width: 100%;
+            display: inline-block;
+            line-height: 4rem;
+            .fontsize(16px);
+            font-weight: normal;
+            position: relative;
+            border-bottom: 1px solid @borderCol1;
+
+            span {
+                float: left;
+                width: 30%;
+            }
+
+            i {
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                position: absolute;
+                top: 1rem;
+            }
+
+            .title_right {
+                right: 0;
+                background: url(../../Images/center14.png) no-repeat center;
+                background-size: 2rem;
+            }
+
+            b {
+                font-weight: normal;
+                float: left;
+            }
+
+            input {
+                float: left;
+                width: 18rem;
+                line-height: 3rem;
+                margin-top: 0.5rem;
+                outline: none;
+                .fontsize(16px);
+            }
+
+            select {
+                margin: 0;
+                height: 3rem;
+                padding: 0;
+                outline: none;
+                .fontsize(16px);
+                appearance: none;
+                -moz-appearance: none;
+                text-align:center;
+                -webkit-appearance: none
+            }
+
+            a.sendbtn {
+                width: 11rem;
+                padding-left: 8%;
+                border-left: 1px solid @borderCol1;
+                color: @fontCol3;
+            }
+        }
+    }
+    /*意见反馈*/
+    .opinion {
+        background: none;
+        
+        .user_title > input {
+            width: 90%;
+            padding: 0 5%;
+            border: 1px solid @borderCol1;
+            border-radius: 0.5rem;
+            margin: 0;
+        }
+
+        textarea {
+            width: 90%;
+            padding: 0.5rem 5%;
+            border: 1px solid @borderCol1;
+            border-radius: 0.5rem;
+            line-height: 2rem;
+            .fontsize(16px);
+            resize: none;
+            margin-top: 1.5rem;
+            outline: none;
+        }
+    }
+}
+.tiplbl {
+    width:90%;
+    margin:0 5%;
+    color:@fontCol5;
+    line-height:4rem;
+}
+
+.bottom {
+
+    span {
+        line-height: 5.5rem;
+        .fontsize(18px);
+    }
+
+    .bottom_right {
+        width: 30%;
+        height: 100%;
+        float: right;
+        text-align: center;
+        background: @bgCol1;
+
+        span {
+            color: #fff;
+        }
+    }
+}

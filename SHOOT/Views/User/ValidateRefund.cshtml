@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "退款审核";
+}
+@section styles {
+    <style>
+        label {
+            color: #aca59d;
+            font-size: 16px;
+        }
+    </style>
+}
+
+<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;">
+    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
+    <div class="panel-body-responsive">
+        <div style="margin: 0 30px;">
+            @if (!string.IsNullOrEmpty(ViewBag.tipStr) && ViewBag.tipStr != "Enter")
+            {
+                <div class="form-group text-center">
+                    <label style="font-size: 18pt; font-weight: bold; color: #ff0000;">
+                        @ViewBag.tipStr
+                    </label>
+                </div>
+                <div class="form-group m-t-10" style="margin: 0 20px;">
+                    <a href="javascript:void(0)" onclick="Pager.Close()" class="btn btn-lg btn-orange btn-block"> 关闭页面 </a>
+                </div>
+            }
+            else
+            {
+                <div class="form-group text-center">
+                    <label style="display:block;">
+                        订单编号：@ViewBag.OrderNo
+                    </label>
+                </div>
+                <div class="form-group m-t-10" style="margin: 0 20px;">
+                    <label>@ViewBag.Description</label>
+                </div>
+                <div class="form-group text-center">
+                    <label style="display:block;">
+                        订单金额：@ViewBag.Amount
+                    </label>
+                </div>
+                <div class="form-group text-center">
+                    <label style="display:block;">
+                        申请退款金额：@ViewBag.RefundAmount
+                    </label>
+                </div>
+                <div class="form-group text-center">
+                    <label style="display:block;">
+                        申请退款原因：@ViewBag.RefundRemark
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>退款金额：</label>
+                    <input id="Amount" type="text" class="form-control input-lg "
+                           placeholder="请输入退款金额" autocomplete="off" value="@ViewBag.RefundAmount" />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:14px;">温馨提示：</label>
+                    <label style="font-size:14px;">
+                        请填写要退款的金额，提交退款成功后，会立刻退回到用户原帐户上，请慎重操作！
+                    </label>
+                </div>
+                <div class="form-group m-t-10" style="margin: 0 20px;">
+                    <a href="javascript:void(0)" onclick="Pager.Submit()" class="btn btn-lg btn-orange btn-block"> 提交 </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        var Pager = {
+            Close: function () {
+                // 调用微信浏览器关闭本页面
+                WeixinJSBridge.call('closeWindow');
+                window.close();
+            },
+            Submit: function () {
+                if ($("#Amount").val() == "") {
+                    modal.show('@ViewBag.Title', "退款金额不能为空!");
+                    return;
+                }
+                if ($("#Amount").val() == 0) {
+                    modal.show('@ViewBag.Title', "退款金额不能为零!");
+                    return;
+                }
+                if (!validate.checkDecimal($("#Amount").val())) {
+                    modal.show('@ViewBag.Title', "请输入正确的金额!");
+                    return;
+                }
+                if (Number($("#Amount").val()) > Number('@ViewBag.Amount')) {
+                    modal.show('@ViewBag.Title', "退款金额不能超过订单金额!");
+                    return;
+                }
+
+                $.ajax({
+                    url: "/User/RefundAmount",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        OrderID: '@ViewBag.OrderID',
+                        Amount: $("#Amount").val()
+                    },
+                    success: function (data) {
+                        modal.show('@ViewBag.Title', data.msg);
+                        if (data.status == 0) {
+                            return;
+                        }
+
+                        // 调用微信浏览器关闭本页面
+                        WeixinJSBridge.call('closeWindow');
+                        window.close();
+                    }
+                });
+            }
+        }
+    </script>
+}

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "首页";
+}
+@section styles {
+    <style>
+        .container-fluid {
+            background: url(/Image/index/bg.png) repeat;
+            background-size: 100%;
+            height: 100%;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="index_logo">
+        <img src="~/Image/common/logo_header.png" />
+    </div>
+
+    <div class="index_title">
+        <img src="~/Image/index/title.png" />
+    </div>
+
+    <div class="index_content">
+        <a href="/Home/StartGame/">
+            <img src="~/Image/index/join.png" />
+        </a>
+    </div>
+</div>
+@*<a href="javascript:void(0)"
+    class="btn btn-lg btn-orange btn-block">
+    分享给好友 </a>*@

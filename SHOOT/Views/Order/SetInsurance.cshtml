@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "填写保单";
+}
+@section styles {
+    <style>
+        label {
+            color: #aca59d;
+            font-size: 16px;
+        }
+    </style>
+}
+
+<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;"
+     ng-app="list1" ng-controller="list1Ctrl">
+    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
+    <div class="panel-body-responsive">
+        <div style="margin: 0 30px;">
+
+            <form id="formBase" data-validate="parsley">
+                <div class="form-group">
+                    <label>姓名：</label>
+                    <input type="text" class="form-control input-lg  parsley-validated"
+                           placeholder="请输入姓名" autocomplete="off" data-required="true" value=""
+                           ng-model="detail.InsuranceName" />
+                </div>
+                <div class="form-group">
+                    <label>身份证号：</label>
+                    <input type="text" class="form-control input-lg  parsley-validated"
+                           placeholder="请输入身份证号" autocomplete="off" data-required="true" value=""
+                           ng-model="detail.InsuranceIdCard" />
+                </div>
+                <div class="form-group">
+                    <label>联系电话：</label>
+                    <input type="text" class="form-control input-lg  parsley-validated"
+                           placeholder="请输入联系电话" autocomplete="off" data-required="true" value=""
+                           ng-model="detail.InsurancePhone" />
+                </div>
+                <div class="form-group">
+                    <label>性别：</label>
+                    <input name="Sex" type="radio" value="1" /> 男
+                    <input name="Sex" type="radio" value="2" /> 女
+                </div>
+                <div class="form-group">
+                    <label>联系地址：</label>
+                    <input type="text" class="form-control input-lg  parsley-validated"
+                           placeholder="请输入联系地址" autocomplete="off" data-required="true" value=""
+                           ng-model="detail.InsuranceAddress" />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:14px;">温馨提示：</label>
+                    <label style="font-size:14px;">您的个人信息我们将会保密，不做第三方用途，请放心填写。</label>
+                </div>
+
+                <div class="form-group m-t-10" style="margin: 0 20px;">
+                    <a href="javascript:void(0)" ng-click="Pager.SubmitInsurance()" class="btn btn-lg btn-orange btn-block"> 确认更改 </a>
+                </div>
+                <div class="form-group m-t-10 m-b-20" style="margin: 0 20px;">
+                    <a href="javascript:void(0)" ng-click="Pager.Cancel()" class="btn btn-lg btn-orange btn-block m-t-10"> 取消 </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/assets/plugins/angular/angular.min.js"></script>
+    <script>
+        var app1 = angular.module('list1', []);
+        app1.controller('list1Ctrl', ['$scope', function ($scope) {
+            $scope.detail = @MvcHtmlString.Create(ViewBag.CouponEntity)
+            $scope.radioModel = undefined;
+            $scope.gunCount = 0;
+
+            var Pager = {
+                SubmitInsurance: function () {
+                    $.ajax({
+                        url: "/Order/SubmitInsurance",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            jsonData: JSON.stringify($scope.detail)
+                        },
+                        success: function (data) {
+                            if (data.status == 0) {
+                                modal.show('@ViewBag.Title', data.msg);
+                                return;
+                            }
+                            window.location.href = "/Order/Success?OrderID=" + $scope.detail.RecordID;
+                        }
+                    });
+                },
+                Cancel: function () {
+                    window.location.href = "/Order/Success?OrderID=" + $scope.detail.RecordID;
+                }
+            }
+
+            $scope.Pager = Pager;
+            if ($scope.detail != null && $scope.detail != undefined) {
+                $("input:radio[name='Sex'][value='" + $scope.detail.InsuranceSex + "']").prop("checked", "checked");
+            }
+        }]);
+    </script>
+}

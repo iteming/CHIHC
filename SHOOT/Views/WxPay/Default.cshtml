@@ -1,0 +1,64 @@
+﻿@model SHOOT.Model.Bisness.Bis_Record
+@{
+    ViewBag.Title = "微信支付";
+}
+@section styles {
+    <style>
+        label {
+            color: #aca59d;
+            font-size: 16px;
+        }
+    </style>
+}
+<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;">
+    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
+    <div class="panel-body-responsive">
+        <div style="margin: 0 30px;">
+            <div class="form-group text-center">
+                <label style="font-size: 18pt; font-weight: bold; color: #00ff90;">
+                    @ViewBag.tipStr
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //调用微信JS api 支付
+    function jsApiCall() {
+        WeixinJSBridge.invoke(
+        'getBrandWCPayRequest',
+        JSON.parse('@Html.Raw(ViewBag.wxJsApiParam)'),
+            function (res) {
+                if (res.err_msg == "get_brand_wcpay_request:ok")//成功
+                {
+                    if ("@ViewBag.Flag" == "") {
+                        window.location.href = "/Order/Success?OrderID=" + '@Model.RecordID' + "&PayType=Consume";
+                    } else {
+                        window.location.href = "/Order/Success?OrderID=" + '@Model.RecordID' + "&PayType=Recharge";
+                    }
+                }
+                else if (res.err_msg == "get_brand_wcpay_request:fail")//失败
+                {
+                    $(".panel-body-responsive label").text("支付失败，请返回重试");
+                }
+                else if (res.err_msg == "get_brand_wcpay_request:cancel")//取消
+                {
+                    window.history.go(-1);
+                }
+            });
+    }
+
+    if (typeof WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        }
+        else if (document.attachEvent) {
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+        }
+    }
+    else {
+        jsApiCall();
+    }
+</script>

@@ -1,0 +1,361 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+  color: #333;
+  font-size: 1.4rem;
+  background: #f1f2f6;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body,
+ul,
+li,
+p,
+nav,
+footer,
+section,
+header,
+article,
+div,
+dl,
+dt,
+dd,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+img,
+em,
+cite,
+table,
+td,
+th {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-appearance: none;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+}
+ul,
+li,
+dt,
+dd,
+ol {
+  list-style: none;
+}
+img {
+  border: 0px;
+}
+div {
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  outline: none;
+  -moz-outline-style: none;
+}
+a:active {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  text-decoration: none;
+  color: #333;
+}
+a:visited {
+  text-decoration: none;
+  color: #333;
+}
+a:link {
+  text-decoration: none;
+  color: #333;
+}
+@media only screen and (min-width: 481px) {
+  html {
+    font-size: 94% !important;
+    /* 15.04÷16=94% */
+  }
+}
+@media only screen and (min-width: 561px) {
+  html {
+    font-size: 109% !important;
+    /* 17.44÷16=109% */
+  }
+}
+@media only screen and (min-width: 641px) {
+  html {
+    font-size: 125% !important;
+    /* 20÷16=125% */
+  }
+}
+.font14 {
+  font-size: 1.4rem;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.main {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+  margin-top: 5rem;
+  border-top: 1px solid #dddddd;
+}
+.main h2.noshow {
+  width: 100%;
+  color: #999999;
+  text-align: center;
+  line-height: 10rem;
+}
+.main h2.noshow > img {
+  display: block;
+  width: 50%;
+  margin: 0 25%;
+  margin-top: 20%;
+}
+.main span.noshow {
+  display: block;
+  width: 100%;
+  color: #999999;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 3rem;
+}
+.hidbg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 0;
+  z-index: 101;
+  background: #333;
+  -moz-opacity: 0.6;
+  opacity: .60;
+  filter: alpha(opacity=60);
+  /* 只支持IE6、7、8、9 */
+}
+/*背景色*/
+/*字体颜色*/
+/*边框色*/
+/*弹窗*/
+.tiplayer {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 7.5rem;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  z-index: 100000;
+}
+.tiplayer .tipbox {
+  max-width: 70%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
+  text-align: center;
+  margin: 0 auto;
+  top: 35%;
+  position: relative;
+  overflow: hidden;
+  padding-top: 1.5rem;
+}
+.tiplayer .tipbox .tipclose {
+  position: absolute;
+  right: 0.1rem;
+  top: 0;
+  font-size: 3rem;
+  color: #666;
+  line-height: 2rem;
+}
+.tiplayer .tipbox dl dt {
+  margin: 8% 0 5%;
+}
+.tiplayer .tipbox dl dt img {
+  width: 25%;
+}
+.tiplayer .tipbox dl .text {
+  font-size: 1.6rem;
+}
+.tiplayer .tipbox dl dd {
+  width: 100%;
+  text-align: center;
+}
+.tiplayer .tipbox dl dd.title {
+  font-size: 1.6rem;
+}
+.tiplayer .tipbox dl dd.btn {
+  font-size: 0;
+  display: block;
+  padding-top: 2rem;
+}
+.tiplayer .tipbox dl dd .tipbtn {
+  font-size: 1.6rem;
+  display: block;
+  width: 50%;
+  color: #000;
+  border-top: 1px solid #dddddd;
+  line-height: 4rem;
+}
+.tiplayer .tipbox dl dd .tipbtn:hover {
+  background: #686868;
+  color: #fff;
+}
+.tiplayer .tipbox dl dd .tipOk {
+  float: right;
+  background: #388fe9;
+  border-top: 1px solid #388fe9;
+  color: #fff;
+}
+.tiplayer .tipbox dl dd .tipCancel {
+  float: left;
+}
+.head {
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  background: #59a5f3;
+  padding: 1rem 0;
+  border-bottom: 1px solid #dddddd;
+}
+.head input {
+  width: 16rem;
+  float: left;
+  height: 3rem;
+  background: #fff;
+  padding: 0 1.5rem;
+  outline: none;
+  position: relative;
+  left: 3rem;
+  font-size: 1.4rem;
+  color: #999999;
+}
+.head .title {
+  width: 100%;
+  display: block;
+  height: 3rem;
+  line-height: 3rem;
+  top: 0;
+  text-align: center;
+  font-size: 1.8rem;
+}
+.head .proDetail {
+  width: 70%;
+  height: 3rem;
+  display: block;
+  line-height: 3rem;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  overflow: visible;
+}
+.head .proDetail > a {
+  float: left;
+  width: 28%;
+  margin: 0 2%;
+  text-align: center;
+}
+.head .proDetail > a.on {
+  color: #388fe9;
+  position: relative;
+}
+.head .proDetail > a.on:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #388fe9;
+  position: absolute;
+  left: 0;
+  bottom: -1.1rem;
+}
+.head span.backbtn {
+  display: inline-block;
+  width: 1.4rem;
+  height: 2.8rem;
+  background: url(../../Images/backbtn.png) no-repeat;
+  background-size: 1.4rem 2.8rem;
+  margin-left: 1rem;
+  position: absolute;
+  z-index: 1000;
+}
+.head i {
+  width: 3rem;
+  height: 3rem;
+  float: left;
+  position: absolute;
+  z-index: 1000;
+}
+.head i.ileft {
+  left: 1.2rem;
+}
+.head i.iright {
+  left: 20.9rem;
+}
+.head a {
+  float: right;
+}
+.head a > img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.main .topSubmitbtn {
+  width: 90%;
+  margin: 2rem 5%;
+  display: block;
+  background: #388fe9;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 4rem;
+  border-radius: 0.5rem;
+}
+.bottom {
+  width: 100%;
+  height: 5.5rem;
+  margin: 0 auto;
+  line-height: 2.2em;
+  background: #fff;
+  border-top: 1px solid #dddddd;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  font-size: 1.4rem;
+}
+.bottom li {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+.bottom li a {
+  margin-top: 0.8rem;
+  width: 100%;
+  display: block;
+  padding-top: 1.8rem;
+}
+.bottom li a.on {
+  color: #388fe9;
+}

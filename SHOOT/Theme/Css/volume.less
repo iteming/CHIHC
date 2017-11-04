@@ -1,0 +1,167 @@
+﻿@import "common.less";
+
+.head {
+    background: #fff;
+}
+
+.main {
+
+    .volumes {
+        width: 100%;
+        margin: 0 auto;
+
+        .okbtn {
+            text-align: center;
+            padding: 0.3rem 2rem;
+            background: @bgCol1;
+            color: #fff;
+            border-radius: 0.3rem;
+            .fontsize(16px);
+            float: right;
+            line-height: 2rem;
+            margin: 1rem 0;
+            margin-right: 5%;
+        }
+
+
+        .vol_top {
+            margin: 0 auto;
+            max-width: 100%;
+            height: 4rem;
+            line-height: 4rem;
+            .fontsize(16px);
+            background: #fff;
+            text-align: center;
+
+            a {
+                display: inline-block;
+                margin: 0 auto;
+                padding: 0 1rem;
+                text-align: center;
+                border-bottom: 1px solid #fff;
+                position: relative;
+            }
+
+                a.on {
+                    color: @fontCol1;
+                }
+
+                    a.on:after {
+                        content: "";
+                        width: 100%;
+                        height: 1px;
+                        background: @fontCol1;
+                        position: absolute;
+                        left: 0;
+                        bottom: 1px;
+                    }
+        }
+
+        >p {
+            width: 100%;
+            line-height: 4rem;
+
+            span {
+                margin-left:5%;
+                .fontsize(16px);
+
+                b {
+                    font-weight: normal;
+                    color: @fontCol3;
+                }
+            }
+        }
+
+        .vols {
+            width: 100%;
+            float: left;
+
+            p {
+                display: block;
+                width: 100%;
+                height: 1rem;
+                background: url(../../Images/vol_top.png) repeat-x;
+                background-size: 1.5rem;
+                border-radius: 1rem;
+            }
+
+            li.old {
+                >p {
+                    background: url(../../Images/vol_top01.png) repeat-x;
+                }
+
+                .vols_left b {
+                    color: @fontCol5;
+                }
+
+                .vols_right strong {
+                    color: @fontCol5;
+                }
+            }
+
+            li {
+                width: 90%;
+                margin: 0 5%;
+                display: block;
+                border-radius: 0.5rem;
+                margin-bottom: 0.85rem;
+                background: #fff;
+                float: left;
+                border-radius: 1rem;
+
+                .vols_left {
+                    width: 35%;
+                    float: left;
+                    margin: 1rem 0;
+                    padding: 1rem 0;
+                    text-align: center;
+                    border-right: 1px solid @borderCol1;
+
+                    b {
+                        .fontsize(20px);
+                        color: @fontCol3;
+                    }
+                }
+
+                .vols_right {
+                    width: 62%;
+                    float: right;
+                    margin: 1rem 0;
+                    text-align: left;
+                    position: relative;
+
+                    strong {
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        .fontsize(16px);
+                        font-weight: 500;
+                        line-height: 2.5rem;
+                        overflow: hidden;
+                        height: 2.5rem;
+                    }
+
+                    span {
+                        color: @fontCol5;
+                        display: block;
+                    }
+
+                    >i {
+                        position: absolute;
+                        top: 50%;
+                        right: 5%;
+                        display: inline-block;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        border-radius: 50%;
+                        border: 1px solid #999999;
+                    }
+
+                        >i.on {
+                            background: url(../../Images/selbtn.png) no-repeat;
+                            background-size: 1.2rem 1.2rem;
+                        }
+                }
+            }
+        }
+    }
+}

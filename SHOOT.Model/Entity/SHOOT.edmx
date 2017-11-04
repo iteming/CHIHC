@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CHIHCC_SHOOTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bis_Coupon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="RecordID" Type="nvarchar" MaxLength="40" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="40" />
+          <Property Name="Coupon" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ExpireDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Bis_Gift">
+          <Key>
+            <PropertyRef Name="GiftID" />
+          </Key>
+          <Property Name="GiftID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="GiftName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExpireDate" Type="date" />
+          <Property Name="ImgPath" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Bis_GiftGood">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="GiftID" Type="nvarchar" MaxLength="40" />
+          <Property Name="GoodID" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Bis_Goods">
+          <Key>
+            <PropertyRef Name="GoodID" />
+          </Key>
+          <Property Name="GoodID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="GoodName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExpireDate" Type="date" />
+          <Property Name="ImgPath" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Bis_Record">
+          <Key>
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="RecordID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="AccountID" Type="nvarchar" MaxLength="40" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="40" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Bis_RecordDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="RecordID" Type="nvarchar" MaxLength="40" />
+          <Property Name="GoodID" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Bis_UserRank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="40" />
+          <Property Name="Score" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sys_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="40" />
+          <Property Name="IdCard" Type="nvarchar" MaxLength="40" />
+          <Property Name="TelePhone" Type="nvarchar" MaxLength="40" />
+          <Property Name="Password" Type="nvarchar" MaxLength="40" />
+          <Property Name="WeiXin_Openid" Type="nvarchar" MaxLength="40" />
+          <Property Name="QQ_Openid" Type="nvarchar" MaxLength="40" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="IsSuper" Type="bit" />
+        </EntityType>
+        <EntityType Name="Sys_UserAccount">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="40" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="CHIHCC_SHOOTModelStoreContainer">
+          <EntitySet Name="Bis_Coupon" EntityType="Self.Bis_Coupon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bis_Gift" EntityType="Self.Bis_Gift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bis_GiftGood" EntityType="Self.Bis_GiftGood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bis_Goods" EntityType="Self.Bis_Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bis_Record" EntityType="Self.Bis_Record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bis_RecordDetail" EntityType="Self.Bis_RecordDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bis_UserRank" EntityType="Self.Bis_UserRank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_User" EntityType="Self.Sys_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_UserAccount" EntityType="Self.Sys_UserAccount" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CHIHCC_SHOOTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bis_Coupon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecordID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Coupon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Bis_Gift">
+          <Key>
+            <PropertyRef Name="GiftID" />
+          </Key>
+          <Property Name="GiftID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GiftName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
+          <Property Name="ImgPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bis_GiftGood">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GiftID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="GoodID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bis_Goods">
+          <Key>
+            <PropertyRef Name="GoodID" />
+          </Key>
+          <Property Name="GoodID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GoodName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
+          <Property Name="ImgPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bis_Record">
+          <Key>
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="RecordID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Bis_RecordDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecordID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="GoodID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bis_UserRank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sys_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IdCard" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhone" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="WeiXin_Openid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="QQ_Openid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsSuper" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Sys_UserAccount">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="CHIHCC_SHOOTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bis_Coupon" EntityType="Self.Bis_Coupon" />
+          <EntitySet Name="Bis_Gift" EntityType="Self.Bis_Gift" />
+          <EntitySet Name="Bis_GiftGood" EntityType="Self.Bis_GiftGood" />
+          <EntitySet Name="Bis_Goods" EntityType="Self.Bis_Goods" />
+          <EntitySet Name="Bis_Record" EntityType="Self.Bis_Record" />
+          <EntitySet Name="Bis_RecordDetail" EntityType="Self.Bis_RecordDetail" />
+          <EntitySet Name="Bis_UserRank" EntityType="Self.Bis_UserRank" />
+          <EntitySet Name="Sys_User" EntityType="Self.Sys_User" />
+          <EntitySet Name="Sys_UserAccount" EntityType="Self.Sys_UserAccount" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CHIHCC_SHOOTModelStoreContainer" CdmEntityContainer="CHIHCC_SHOOTEntities">
+          <EntitySetMapping Name="Bis_Coupon">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Bis_Coupon">
+              <MappingFragment StoreEntitySet="Bis_Coupon">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bis_Gift">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Bis_Gift">
+              <MappingFragment StoreEntitySet="Bis_Gift">
+                <ScalarProperty Name="GiftID" ColumnName="GiftID" />
+                <ScalarProperty Name="GiftName" ColumnName="GiftName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bis_GiftGood">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Bis_GiftGood">
+              <MappingFragment StoreEntitySet="Bis_GiftGood">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GiftID" ColumnName="GiftID" />
+                <ScalarProperty Name="GoodID" ColumnName="GoodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bis_Goods">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Bis_Goods">
+              <MappingFragment StoreEntitySet="Bis_Goods">
+                <ScalarProperty Name="GoodID" ColumnName="GoodID" />
+                <ScalarProperty Name="GoodName" ColumnName="GoodName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bis_Record">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Bis_Record">
+              <MappingFragment StoreEntitySet="Bis_Record">
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bis_RecordDetail">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Bis_RecordDetail">
+              <MappingFragment StoreEntitySet="Bis_RecordDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="GoodID" ColumnName="GoodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bis_UserRank">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Bis_UserRank">
+              <MappingFragment StoreEntitySet="Bis_UserRank">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_User">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Sys_User">
+              <MappingFragment StoreEntitySet="Sys_User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="TelePhone" ColumnName="TelePhone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="WeiXin_Openid" ColumnName="WeiXin_Openid" />
+                <ScalarProperty Name="QQ_Openid" ColumnName="QQ_Openid" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsSuper" ColumnName="IsSuper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_UserAccount">
+            <EntityTypeMapping TypeName="CHIHCC_SHOOTModel.Sys_UserAccount">
+              <MappingFragment StoreEntitySet="Sys_UserAccount">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

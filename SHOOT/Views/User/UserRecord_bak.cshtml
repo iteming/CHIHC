@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "用户账户流水";
+}
+
+@section styles {
+    <style>
+        label {
+            color: #aca59d;
+            font-size: 16px;
+        }
+
+        .table tr th {
+            font-size: 15px;
+            color: #FFF !important;
+            background: rgba(58, 53, 44, 0.8) !important;
+            border-bottom: 0.5px solid #A2957A !important;
+        }
+
+        .table tr td {
+            font-size: 15px;
+            color: #A2957A !important;
+            background: rgba(36, 36, 36, 0.8) !important;
+            border-top: none !important;
+            border-bottom: 0.5px solid #A2957A !important;
+        }
+
+        .user_base {
+            margin: 0 30px;
+            color: #A2957A !important;
+            background: rgba(36, 36, 36, 0.8) !important;
+            border-radius: 8px;
+        }
+            .user_base .btn {
+                font-size: 15px;
+            }
+
+            .user_base .user_blance {
+                background: rgba(58, 53, 44, 0.8) !important;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+    </style>
+}
+
+<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;"
+     ng-app="list1" ng-controller="list1Ctrl">
+    <div class="panel-body-responsive">
+        <div class="user_base m-t-20">
+            <table>
+                <tr>
+                    <td style="padding: 20px 20px 0 20px; ">
+                        <div class="form-group">
+                            <img style="width:100px;height:100px;border-radius:50px" ng-src='{{detail.HeaderUrl?detail.HeaderUrl:"#"}}' />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group p-t-25">
+                            <label>姓名：<span ng-bind="detail.UserName"></span></label>
+                            <label>手机号：<span ng-bind="detail.TelePhone"></span></label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="user_blance p-t-10">
+                <table style="width:100%">
+                    <tr>
+                        <td style="padding: 0 20px;">
+                            <div class="form-group p-t-5">
+                                <label>余额：<span style="color:#FFF" ng-bind="detail.Balance">0</span> 元</label>
+                            </div>
+                        </td>
+                        <td class="text-right p-r-20">
+                            <div class="form-group">
+                                @*<a href="/WxPay/Recharge" class="btn btn-orange"> 充值 </a>*@
+                                <a href="/User/UserBase/" class="btn btn-orange"> 我的主页 </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <div style="margin: 0 30px">
+            <img src="~/Images/user_15.png" style="width: 100%;" />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">订单时间</th>
+                        <th class="text-center">订单金额</th>
+                        <th class="text-center">订单状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in lists">
+                        <td class="text-center"><span ng-bind="item.CreateTime"></span></td>
+                        <td class="text-center"><span ng-bind="item.Amount"></span></td>
+                        <td class="text-center"><span ng-bind="item.StatusName"></span></td>
+                        <td class="text-center">
+                            <a href="javascript:void(0)" ng-click="Pager.Refund(item)" ng-show="item.Status==2" class="btn btn-link btn-orange"> 退款 </a>
+                            @*<a href="javascript:void(0)" ng-click="Pager.Delete(item)" ng-show="item.Status==1" class="btn btn-link btn-orange"> 删除 </a>*@
+                            <a href="javascript:void(0)" ng-click="Pager.Detail(item)" ng-show="item.Status!=1&&item.Status!=2"
+                               class="btn btn-link btn-default">查看</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/assets/plugins/angular/angular.min.js"></script>
+    <script>
+    var app1 = angular.module('list1', []);
+    app1.controller('list1Ctrl', ['$scope', function ($scope) {
+        $scope.detail = @MvcHtmlString.Create(ViewBag.User)
+        $scope.lists = @MvcHtmlString.Create(ViewBag.RecordList)
+        $scope.tmp = undefined;
+        var Pager = {
+            Refund: function (item) {
+                //// 退款（作废）
+                //window.location.href = "/User/EnterPassword?OrderID=" + item.RecordID + "&CodeType=2";
+
+                // 退款申请
+                window.location.href = "/User/EnterRefundApply?OrderID=" + item.RecordID;
+            },
+            Delete: function (item) {
+                //删除订单
+            },
+            Detail: function (item) {
+                //查看订单
+                window.location.href = "/Order/Success?OrderID=" + item.RecordID;
+            }
+        }
+        $scope.Pager = Pager;
+    }]);
+    </script>
+}

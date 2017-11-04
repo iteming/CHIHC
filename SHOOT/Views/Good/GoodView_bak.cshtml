@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "礼包商品购买";
+}
+
+@section styles {
+    <style>
+        label {
+            color: #aca59d;
+            font-size: 14px;
+        }
+        .focus {
+            border: 2px solid #ff0000 !important;
+            /*border: 2px solid #21e99f !important;*/
+        }
+    </style>
+}
+
+<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;"
+     ng-app="list1" ng-controller="list1Ctrl">
+    <div style="margin: 0 20px"><img src="~/Images/good_01.png" style="width: 100%;" /></div>
+    <div class="panel-body-responsive">
+        <div style="margin: 0 30px;">
+
+            <div class="banners m-b-5" style="border: 2px solid #e8bf7b; border-radius:6px; padding: 10px; "
+                 ng-repeat="item in lists" ng-class='{focus: $index==focus}'>
+                <!-- 礼包1 -->
+                <img class="swiper-slide" ng-src='{{item.ImgPath?item.ImgPath:"#"}}' ng-click="Pager.Choose($index)" />
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-body-responsive m-b-10">
+        <div style="margin: 0 30px;" class="m-t-10">
+            <div class="form-group m-t-10" style="margin: 0 20px;">
+                <a href="javascript:void(0)" ng-click="Pager.SubmitGift()" class="btn btn-lg btn-orange btn-block"> 去支付 </a>
+            </div>
+        </div>
+    </div>
+    <div style="margin: 0 30px"><img src="~/Images/recharge_11.png" style="width: 100%;" /></div>
+    <div class="panel-body-responsive">
+        <div style="margin: 0 30px;" class="m-t-10">
+            <div class="form-group">
+                <label>1：礼包金额为游戏金额。</label>
+                <label>2：游戏期间所有消费，将从本金额中扣除。</label>
+                <label>3：用户消费剩余金额，可申请退款。</label>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/assets/plugins/angular/angular.min.js"></script>
+    <script>
+        var app1 = angular.module('list1', []);
+        app1.controller('list1Ctrl', ['$scope', function ($scope) {
+            $scope.lists = [];
+            $scope.focus = undefined;
+            var Pager = {
+                GetGiftsData: function () {
+                    $scope.lists = [];
+                    $scope.focus = undefined;
+                    $.ajax({
+                        url: "/Good/GetGiftsData",
+                        type: "post",
+                        dataType: "json",
+                        data: { },
+                        success: function (data) {
+                            if (data.status == 0) {
+                                modal.show('@ViewBag.Title', data.msg);
+                                return;
+                            }
+                            $scope.lists = data.data;
+                            $scope.$apply();
+                        }
+                    });
+                },
+                Choose: function (index) {
+                    $scope.focus = index;
+                },
+                SubmitGift: function () {
+                    if ($scope.focus == undefined) {
+                        modal.show('@ViewBag.Title', "请选择礼包");
+                        return;
+                    }
+                    var entity = $scope.lists[$scope.focus];
+                    $.ajax({
+                        url: "/Good/SubmitGift",
+                        type: "post",
+                        dataType: "json",
+                        data: { jsonData: JSON.stringify(entity) },
+                        success: function (data) {
+                            if (data.status == 0) {
+                                modal.show('@ViewBag.Title', data.msg);
+                                return;
+                            }
+                            window.location.href = "/Order/OrderView";
+                        }
+                    });
+                }
+            }
+            
+            $scope.Pager = Pager;
+            Pager.GetGiftsData();
+        }]);
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "账户充值";
+}
+@section styles {
+    <style>
+        label {
+            color: #aca59d;
+            font-size: 16px;
+        }
+
+        .input-lg {
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            line-height: 2;
+            background-color: #000;
+            color: #aca59d;
+        }
+    </style>
+}
+
+<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;">
+    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
+    <div class="panel-body-responsive">
+        <div style="margin: 0 30px;" class="m-t-10">
+            <div class="form-group">
+                <label>金额：</label>
+                <input id="money" type="text" class="form-control input-lg  parsley-validated"
+                       placeholder="请输入充值金额" autocomplete="off" data-required="true" value="0.01" />
+            </div>
+            <div class="form-group">
+                <label style="font-size:14px;">温馨提示：</label>
+                <label style="font-size:14px;">充值金额不得低于1.00。</label>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-lg btn-orange btn-block topSubmitbtn"> 立即充值 </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".topSubmitbtn").click(function () {
+                if ($(".money").val() == "") {
+                    modal.show('@ViewBag.Title', "请输入充值金额");
+                    return;
+                }
+                var money = parseFloat($("#money").val()).toFixed(2);
+                if (money < 0.01) {
+                    modal.show('@ViewBag.Title', "充值金额不得低于0.01");
+                    return;
+                } else {
+                    location.href = "/WxPay/WxPayReady?IdAmount=" + money + "|";
+                }
+            })
+        })
+    </script>
+}

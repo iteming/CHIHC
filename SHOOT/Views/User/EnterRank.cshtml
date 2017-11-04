@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "录入成绩";
+}
+@section styles {
+    <style>
+        label {
+            color: #aca59d;
+            font-size: 16px;
+        }
+    </style>
+}
+
+<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;">
+    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
+    <div class="panel-body-responsive">
+        <div style="margin: 0 30px;">
+            <div class="form-group">
+                <label>射击成绩：</label>
+                <input id="Score" type="text" class="form-control input-lg "
+                       placeholder="请输入射击成绩" autocomplete="off" value="" />
+            </div>
+            <div class="form-group">
+                <label style="font-size:14px;">温馨提示：</label>
+                <label style="font-size:14px;">请填写真实的射击成绩，自觉遵守活动规则，谢谢合作。</label>
+            </div>
+            <div class="form-group m-t-10" style="margin: 0 20px;">
+                <a href="javascript:void(0)" onclick="Pager.Submit()" class="btn btn-lg btn-orange btn-block"> 提交 </a>
+            </div>
+            <div class="form-group m-t-10" style="margin: 0 20px;">
+                <a href="/Order/Success?OrderID=@ViewBag.OrderID" class=" btn btn-lg btn-orange btn-block"> 取消 </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        var Pager = {
+            Submit: function () {
+                $.ajax({
+                    url: "/User/SubmitScore",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        OrderID: '@ViewBag.OrderID',
+                        Score: $("#Score").val()
+                    },
+                    success: function (data) {
+                        if (data.status == 0) {
+                            modal.show('@ViewBag.Title', data.msg);
+                            return;
+                        }
+                        window.location.href = "/User/UserBase";
+                    }
+                });
+            }
+        }
+    </script>
+}

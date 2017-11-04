@@ -1,0 +1,168 @@
+﻿@import "common.less";
+
+.head {
+    background: #fff;
+
+    input {
+        background: @bgCol2;
+    }
+
+    i {
+        background: @bgCol2;
+    }
+}
+
+.main {
+    /*产品分类*/
+    .main_left {
+        width: 23%;
+        display: block;
+        float: left;
+        background: #fff;
+        .fontsize(16px);
+
+        li {
+            width: 100%;
+            height: 5rem;
+            overflow: hidden;
+            text-align: center;
+            line-height: 5rem;
+            border-bottom: 1px solid @borderCol1;
+            border-right: 1px solid @borderCol1;
+        }
+
+            li.on {
+                color:@fontCol1;
+            }
+    }
+
+    .main_right {
+        width: 72.8%;
+        float: right;
+        margin: 2% 2% 0 2%;
+        .font14;
+
+        img {
+            width: 100%;
+        }
+
+        strong {
+            display: block;
+            width: 100%;
+            line-height: 2.75rem;
+            margin-top: 0.5rem;
+        }
+
+        ul {
+            width: 100%;
+            display: block;
+
+            li {
+                width: 32.3%;
+                float: left;
+                margin-right: 1.5%;
+                background: #fff;
+                margin-bottom: 1.5%;
+            }
+
+                li.nomar {
+                    margin-right: 0;
+                }
+
+            span {
+                width: 100%;
+                display: block;
+                line-height: 3rem;
+                text-align: center;
+            }
+        }
+    }
+    /*产品列表*/
+    .pros {
+        width: 100%;
+        margin: 0 auto;
+
+        .pro_top {
+            height: 4rem;
+            line-height: 4rem;
+            width: 100%;
+            .fontsize(16px);
+            background: @bgCol2;
+            border-bottom: 1px solid @borderCol1;
+
+            a {
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+                width: 32%;
+                text-align: center;
+            }
+
+                a.on {
+                    color: @fontCol1;
+                }
+        }
+
+        .pro_list {
+            width: 100%;
+            margin: 0 auto;
+            height: auto;
+
+            li {
+                float: left;
+                width: 98%;
+                padding: 2% 1%;
+                background: #fff;
+                position: relative;
+                border-bottom: 1px solid @borderCol1;
+            }
+
+            img {
+                width: 30%;
+                float: left;
+            }
+
+            p {
+                width: 67%;
+                float: right;
+                display: block;
+                line-height: 2rem;
+                .font14;
+                height: 4rem;
+                overflow: hidden;
+            }
+
+            span {
+                display: block;
+                float: left;
+                line-height: 2.5rem;
+                margin: 0 0.5rem;
+            }
+
+            .money_now {
+                .fontsize(18px);
+                padding-left: 1rem;
+                color: @fontCol4;
+                position: absolute;
+                bottom: 1rem;
+                left: 31%;
+            }
+
+                .money_now:after {
+                    content: "￥";
+                    position: absolute;
+                    left: 0;
+                    .font14;
+                }
+
+            .money_old {
+                color: @fontCol5;
+                float: right;
+                .font14;
+                position: absolute;
+                right: 0.5rem;
+                bottom: 1rem;
+            }
+        }
+    }
+}
