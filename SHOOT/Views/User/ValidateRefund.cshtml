@@ -2,74 +2,91 @@
 @{
     ViewBag.Title = "退款审核";
 }
-@section styles {
-    <style>
-        label {
-            color: #aca59d;
-            font-size: 16px;
-        }
-    </style>
-}
 
-<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;">
-    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
-    <div class="panel-body-responsive">
-        <div style="margin: 0 30px;">
-            @if (!string.IsNullOrEmpty(ViewBag.tipStr) && ViewBag.tipStr != "Enter")
-            {
-                <div class="form-group text-center">
-                    <label style="font-size: 18pt; font-weight: bold; color: #ff0000;">
-                        @ViewBag.tipStr
+<div class="container-fluid">
+    <div class="common-logo">
+        <img src="~/Image/common/logo_header.png" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.tipStr) && ViewBag.tipStr != "Enter")
+    {
+        <div class="common-header">
+            <label style="font-size: 18pt; font-weight: bold; color: #ff0000;">
+                @ViewBag.tipStr
+            </label>
+        </div>
+        <a href="javascript:void(0)" onclick="Pager.Close()"
+           class="common-button">关闭页面</a>
+    }
+    else
+    {
+        <div class="common-header">
+            退款审核
+        </div>
+
+        <div class="common-content">
+            <div class="border-header"></div>
+            <div class="border-body">
+
+                <div class="border-group-info" style="position: relative;top: -2rem;">
+                    <label>订单编号：</label>
+                    <label>
+                        <span style="color:#FFF">@ViewBag.OrderNo</span>
                     </label>
                 </div>
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <a href="javascript:void(0)" onclick="Pager.Close()" class="btn btn-lg btn-orange btn-block"> 关闭页面 </a>
-                </div>
-            }
-            else
-            {
-                <div class="form-group text-center">
-                    <label style="display:block;">
-                        订单编号：@ViewBag.OrderNo
+
+                <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                    <label>订单详情：</label>
+                    <label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#FFF">@ViewBag.Description</span>
                     </label>
                 </div>
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <label>@ViewBag.Description</label>
-                </div>
-                <div class="form-group text-center">
-                    <label style="display:block;">
-                        订单金额：@ViewBag.Amount
+
+                <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                    <label>订单金额：</label>
+                    <label>
+                        <span style="color:#FFF">@ViewBag.Amount</span>
                     </label>
                 </div>
-                <div class="form-group text-center">
-                    <label style="display:block;">
-                        申请退款金额：@ViewBag.RefundAmount
+
+                <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                    <label>申请退款金额：</label>
+                    <label>
+                        <span style="color:#FFF">@ViewBag.RefundAmount</span>
                     </label>
                 </div>
-                <div class="form-group text-center">
-                    <label style="display:block;">
-                        申请退款原因：@ViewBag.RefundRemark
+
+                <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                    <label>申请退款原因：</label>
+                    <label>
+                        <span style="color:#FFF">@ViewBag.RefundRemark</span>
                     </label>
                 </div>
-                <div class="form-group">
+
+                <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
                     <label>退款金额：</label>
-                    <input id="Amount" type="text" class="form-control input-lg "
-                           placeholder="请输入退款金额" autocomplete="off" value="@ViewBag.RefundAmount" />
+                    <input id="Amount" type="text" class="form-control" placeholder="请输入退款金额" 
+                           value="@ViewBag.RefundAmount"/>
                 </div>
-                <div class="form-group">
-                    <label style="font-size:14px;">温馨提示：</label>
-                    <label style="font-size:14px;">
+                <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                    <label>温馨提示：</label>
+                    <label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         请填写要退款的金额，提交退款成功后，会立刻退回到用户原帐户上，请慎重操作！
                     </label>
                 </div>
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <a href="javascript:void(0)" onclick="Pager.Submit()" class="btn btn-lg btn-orange btn-block"> 提交 </a>
-                </div>
-            }
-        </div>
-    </div>
-</div>
 
+                <a href="javascript:void(0)" onclick="Pager.Submit()"
+                   class="common-button">提　　交</a>
+            </div>
+            <div class="border-footer"></div>
+            <div class="common-content-footer">
+                <img src="~/Image/common/logo_footer.png" />
+            </div>
+        </div>
+    }
+</div>
 @section scripts {
     <script>
         var Pager = {

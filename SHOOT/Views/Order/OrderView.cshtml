@@ -4,78 +4,36 @@
 
 @section styles {
     <style>
-        .container-fluid {
-            min-height: 130%;
-        }
-
-        .order_header div {
+        .order-header div {
             width: 85%;
             margin: 0 auto 3% auto;
         }
-
-            .order_header div > img {
+            .order-header div > img {
                 width: 100%;
             }
-
-        .border_body {
-            min-height: 40rem;
-            top: 23px;
-        }
-        .border_footer {
-            bottom: -39px;
-        }
-
-        .common_button {
-            background: url(/Image/common/btn.png) no-repeat;
-            background-size: 100%;
-            position: absolute;
-            bottom: 0%;
-            left: 50%;
-            margin-left: -30%;
-            width: 60%;
-            height: 16%;
-            text-align: center;
-            padding: 3% 0;
-            color: #f7cc91;
-        }
-        .common_button2 {
-            bottom: -9%;
-        }
-
-        .common_footer {
-            bottom: -17.5%;
-        }
-        .form-group-info {
-            margin: 3% 8%;
-        }
     </style>
 }
 
 <div class="container-fluid" ng-app="list1" ng-controller="list1Ctrl">
-    <div class="userbase_logo">
+    <div class="common-logo">
         <img src="~/Image/common/logo_header.png" />
     </div>
 
-    <div class="order_header">
+    <div class="order-header">
         <div style="border: 1px solid #e8bf7b; border-radius:6px; padding: 10px; ">
-            <!-- 礼包1 -->
             <img ng-src='{{detail.ImgPath?detail.ImgPath:"#"}}' />
         </div>
         <div class="form-group m-t-10">
-            <label>
-                <span style="color:#FFF">
-                    礼包详情：<span ng-bind="detail.Description"></span>
-                </span>
+            <label>礼包详情：
+                <span style="color:#FFF" ng-bind="detail.Description"></span>
             </label>
         </div>
     </div>
 
-    <div class="common_content">
-        <div class="border_header">
-            <img src="~/Image/common/border_header.png" />
-        </div>
-        <div class="border_body">
-            <table class="table">
+    <div class="common-content">
+        <div class="border-header"></div>
+        <div class="border-body">
+            <table class="table" style="position:relative;top:-2rem;">
                 <thead>
                     <tr>
                         <th class="text-center"></th>
@@ -96,31 +54,24 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="form-group-info">
+            <div class="border-group-info" style="position:relative;top:-1rem;">
                 <label>共计金额：<span style="color:#FFF" ng-bind="detail.Price"></span> 元</label>
             </div>
-            <div class="form-group-info">
+            <div class="border-group-info" style="position:relative;top:-1rem;">
                 <label style="display:inline">支付方式：</label>
                 <label class="radio-inline">
                     <input type="radio" name="paymentType" class="m-t-5" checked /> 微信支付
                 </label>
-                <label class="radio-inline">
+                @*<label class="radio-inline">
                     <input type="radio" name="paymentType" class="m-t-5" />  支付宝支付
-                </label>
+                </label>*@
             </div>
-
-            <div class="form-group-info">
-                <a href="javascript:void(0)" ng-click="Pager.SubmitOrder()" class="common_button"> 提交订单 </a>
-            </div>
-            <div class="form-group-info">
-                <a href="/Good/GoodView" class="common_button common_button2"> 上一步 </a>
-            </div>
+            <a href="javascript:void(0)" ng-click="Pager.SubmitOrder()" 
+               class="common-button"> 提交订单 </a>
+            <a href="/Good/GoodView" class="common-button m-t-10"> 上一步 </a>
         </div>
-
-        <div class="border_footer">
-            <img src="~/Image/common/border_bottom.png" />
-        </div>
-        <div class="common_footer">
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
             <img src="~/Image/common/logo_footer.png" />
         </div>
     </div>

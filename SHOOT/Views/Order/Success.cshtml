@@ -2,89 +2,59 @@
     ViewBag.Title = "支付成功";
 }
 
-@section styles {
-    <style>
-        label {
-            color: #aca59d;
-            font-size: 16px;
-        }
-    </style>
-}
+<div class="container-fluid">
+    <div class="common-logo">
+        <img src="~/Image/common/logo_header.png" />
+    </div>
 
-<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px; ">
-    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
-    <div class="panel-body-responsive">
-        <div style="margin: 0 30px;">
-            <div class="form-group text-center">
-                <label style="font-size: 18pt; font-weight: bold; color: #00ff90;">
-                    恭喜您，支付成功！
+    <div class="common-header">
+        恭喜您，支付成功！
+    </div>
+
+    <div class="common-content">
+        <div class="border-header"></div>
+        <div class="border-body">
+
+            <div class="border-group-info" style="position: relative;top: -2rem;">
+                <label>订单编号：</label>
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color:#FFF">@ViewBag.OrderNo</span>
                 </label>
             </div>
-            <div class="form-group text-center">
-                <label style="display:block;">
-                    订单编号：@ViewBag.OrderNo
+
+            <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                <label>订单详情：</label>
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color:#FFF">@ViewBag.Description</span>
                 </label>
             </div>
-            <div class="form-group m-t-10" style="margin: 0 20px;">
-                <label>@ViewBag.Description</label>
-            </div>
+
             @if (ViewBag.Status == (int)SHOOT.Common.Order_Status.Payed)
             {
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <a href="/Order/SetInsurance?OrderID=@ViewBag.OrderID" class="btn btn-lg btn-orange btn-block"> 填写保单 </a>
-                </div>
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <a href="javascript:void(0)" onclick="Pager.FinishGame(true)" class="btn btn-lg btn-orange btn-block"> 录入成绩 </a>
-                </div>
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <a href="javascript:void(0)" onclick="Pager.FinishGame(false)" class="btn btn-lg btn-orange btn-block"> 放弃成绩 </a>
-                </div>
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <a href="javascript:void(0)" onclick="Pager.Refund()" class="btn btn-lg btn-orange btn-block"> 申请退款 </a>
-                </div>
+                <a href="/Order/SetInsurance?OrderID=@ViewBag.OrderID"
+                   class="common-button">填写保单</a>
+                <a href="javascript:void(0)" onclick="Pager.FinishGame(true)"
+                   class="common-button m-t-5">录入成绩</a>
+                <a href="javascript:void(0)" onclick="Pager.FinishGame(false)"
+                   class="common-button m-t-5">放弃成绩</a>
+                <a href="javascript:void(0)" onclick="Pager.Refund()"
+                   class="common-button m-t-5">申请退款</a>
             }
-            else { 
-                <div class="form-group m-t-10" style="margin: 0 20px;">
-                    <a href="/User/UserRecord" class="btn btn-lg btn-orange btn-block"> 返回 </a>
-                </div>
-                @*<div style="margin: 0 70px;">
-                    <div class="banners m-t-10 m-b-5" style="border: 2px solid #e8bf7b; border-radius:6px; padding: 10px; ">
-                        <div id="qrcode"></div>
-                    </div>
-                </div>*@
+            else
+            {
+                <a href="/User/UserRecord"
+                   class="common-button m-t-5">返　　回</a>
             }
+        </div>
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
+            <img src="~/Image/common/logo_footer.png" />
         </div>
     </div>
 </div>
 @section scripts {
-    @*<script src="~/assets/js/qrcode.js"></script>
-    <script>
-        //设置二维码
-        var elem = document.getElementById("qrcode");
-        if (elem != "" && elem != undefined) {
-            var coupon = '@ViewBag.Coupon'
-            var qrcode = new QRCode(elem, {
-                width: 200,
-                height: 200
-            });
-
-            //// 使用券二维码
-            //qrcode.makeCode(coupon);
-
-            // 使用券商品详情二维码
-            $.ajax({
-                url: "/Order/UseCoupon",
-                type: "post",
-                dataType: "json",
-                data: {
-                    coupon: coupon,
-                },
-                success: function (data) {
-                    qrcode.makeCode(data);
-                }
-            });
-        }
-    </script>*@
     <script>
         var Pager = {
             FinishGame: function (entry) {
@@ -97,8 +67,6 @@
                 }
             },
             Refund: function () {
-                @*// 退款（作废）
-                window.location.href = "/User/EnterPassword?OrderID=" + '@ViewBag.OrderID' + "&CodeType=2";*@
                 window.location.href = "/User/EnterRefundApply?OrderID=" + '@ViewBag.OrderID';
             }
         }

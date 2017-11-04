@@ -8,63 +8,44 @@
             border: 2px solid #ff0000 !important;
             border-radius: 6px;
         }
-        .border_body div {
+        .border-body .gifts {
+            position:relative;
+            top: -2rem;
+        }
+        .border-body .item {
             width: 85%;
             margin: 0 auto 3% auto;
         }
-        .border_body div > img {
-            width: 100%;
-        }
-        .border_body {
-            top: 23px;
-        }
-        .border_footer {
-            bottom: -38px;
-        }
-        .common_button {
-            bottom: 0%;
-        }
-        .common_footer {
-            bottom: -28.5%;
-        }
+            .border-body .item > img {
+                width: 100%;
+            }
     </style>
 }
 
 <div class="container-fluid" ng-app="list1" ng-controller="list1Ctrl">
-    <div class="userbase_logo">
+    <div class="common-logo">
         <img src="~/Image/common/logo_header.png" />
     </div>
 
-    <div class="good_title">
+    <div class="good-title">
+        <img src="~/Image/gift/title.png" />
     </div>
 
-    <div class="common_content">
-        <div class="border_header">
-            <img src="~/Image/common/border_header.png" />
-        </div>
-
-        <div class="border_body">
-
-            <div ng-repeat="item in lists" ng-class='{focus: $index==focus}'>
-                <!-- 礼包1 -->
-                <img ng-src='{{item.ImgPath?item.ImgPath:"#"}}' ng-click="Pager.Choose($index)" />
+    <div class="common-content">
+        <div class="border-header"></div>
+        <div class="border-body">
+            <div class="gifts">
+                <div class="item" ng-repeat="item in lists" ng-class='{focus: $index==focus}'>
+                    <!-- 礼包1 -->
+                    <img ng-src='{{item.ImgPath?item.ImgPath:"#"}}' ng-click="Pager.Choose($index)" />
+                </div>
             </div>
-
-            <div class="form-group-info">
-                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            </div>
-            <div class="form-group-info">
-                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            </div>
-            <a href="javascript:void(0)" ng-click="Pager.SubmitGift()" class="common_button">
+            <a href="javascript:void(0)" ng-click="Pager.SubmitGift()" class="common-button">
                 下一步
             </a>
         </div>
-
-        <div class="border_footer">
-            <img src="~/Image/common/border_bottom.png" />
-        </div>
-        <div class="common_footer">
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
             <img src="~/Image/common/logo_footer.png" />
         </div>
     </div>

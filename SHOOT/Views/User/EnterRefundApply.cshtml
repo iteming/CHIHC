@@ -1,58 +1,71 @@
 ﻿@{
     ViewBag.Title = "申请退款";
 }
-@section styles {
-    <style>
-        label {
-            color: #aca59d;
-            font-size: 16px;
-        }
-    </style>
-}
 
-<div style="background: url(/Images/home.png) repeat; background-size: 100%; min-height: 680px;">
-    <div style="margin: 0 20px"><img src="~/Images/header_01.png" style="width: 100%;" /></div>
-    <div class="panel-body-responsive">
-        <div style="margin: 0 30px;">
-            <div class="form-group text-center">
-                <label style="display:block;">
-                    订单编号：@ViewBag.OrderNo
+<div class="container-fluid">
+    <div class="common-logo">
+        <img src="~/Image/common/logo_header.png" />
+    </div>
+
+    <div class="common-header">
+        申请退款
+    </div>
+
+    <div class="common-content">
+        <div class="border-header"></div>
+        <div class="border-body">
+
+            <div class="border-group-info" style="position: relative;top: -2rem;">
+                <label>订单编号：</label>
+                <label>
+                    <span style="color:#FFF">@ViewBag.OrderNo</span>
                 </label>
             </div>
-            <div class="form-group m-t-10" style="margin: 0 20px;">
-                <label>@ViewBag.Description</label>
-            </div>
-            <div class="form-group text-center">
-                <label style="display:block;">
-                    订单金额：@ViewBag.Amount
+
+            <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                <label>订单详情：</label>
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color:#FFF">@ViewBag.Description</span>
                 </label>
             </div>
-            <div class="form-group">
+
+            <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                <label>订单金额：</label>
+                <label>
+                    <span style="color:#FFF">@ViewBag.Amount</span>
+                </label>
+            </div>
+
+            <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
                 <label>申请退款金额（非必填）：</label>
-                <input id="Amount" type="text" class="form-control input-lg "
-                       placeholder="请输入申请退款金额" autocomplete="off" value="" />
+                <input id="Amount" type="text" class="form-control" placeholder="请输入申请退款金额" />
             </div>
-            <div class="form-group">
+            <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
                 <label>退款原因（必填）：</label>
-                <textarea id="Remark" class="textarea form-control input-lg " rows="5"
-                          placeholder="请输入退款原因"></textarea>
+                <textarea id="Remark" rows="3" class="form-control textarea" placeholder="请输入退款原因"></textarea>
             </div>
-            <div class="form-group">
-                <label style="font-size:14px;">温馨提示：</label>
-                <label style="font-size:14px;">
+            <div class="border-group-info m-t-5" style="position: relative;top: -2rem;">
+                <label>温馨提示：</label>
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     请填写申请退款的金额、退款原因，自觉遵守活动规则，谢谢合作。
                     申请退款后，请等待审核，退款会在2-3个工作日退回到原帐户！
                 </label>
-                <label style="font-size:14px;">
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     请在退款原因中详细描述要退款的内容，比如：剩余10发子弹，申请退款！
                 </label>
             </div>
-            <div class="form-group m-t-10" style="margin: 0 20px;">
-                <a href="javascript:void(0)" onclick="Pager.Submit()" class="btn btn-lg btn-orange btn-block"> 提交 </a>
-            </div>
-            <div class="form-group m-t-10 m-b-20" style="margin: 0 20px;">
-                <a href="/User/UserRecord" class=" btn btn-lg btn-orange btn-block"> 取消 </a>
-            </div>
+
+            <a href="javascript:void(0)" onclick="Pager.Submit()"
+               class="common-button">提　　交</a>
+            <a href="/User/UserRecord"
+               class="common-button m-t-10">取　　消</a>
+        </div>
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
+            <img src="~/Image/common/logo_footer.png" />
         </div>
     </div>
 </div>

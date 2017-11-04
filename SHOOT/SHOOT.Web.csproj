@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\menu.css" />
+    <Content Include="assets\css\Modal.css" />
     <Content Include="assets\css\style-1.5.0.css" />
     <Content Include="assets\js\CustomValidate.js" />
     <Content Include="assets\js\fileUpload.js" />

@@ -3,26 +3,27 @@
 }
 @section styles {
     <style>
-        .container-fluid {
-            min-height: 110%;
+        .focus {
+            border: 1px solid #ff0000 !important;
+            background-color: #ff6a00;
         }
     </style>
 }
 <div class="container-fluid" ng-app="list1" ng-controller="list1Ctrl">
-    <div class="userbase_logo">
+    <div class="common-logo">
         <img src="~/Image/common/logo_header.png" />
     </div>
 
-    <div class="user_header">
+    <div class="user-header">
         <table>
             <tr>
                 <td>
-                    <div class="form-group">
+                    <div>
                         <img ng-src='{{detail.HeaderUrl?detail.HeaderUrl:"#"}}' />
                     </div>
                 </td>
                 <td width="55%">
-                    <div class="form-group" style="margin: 7% 6% 0 0; ">
+                    <div style="margin: 7% 6% 0 0; text-align: left;">
                         <label>姓名：<span ng-bind="detail.UserName"></span></label>
                         <label>手机号：<span ng-bind="detail.TelePhone"></span></label>
                     </div>
@@ -30,7 +31,7 @@
             </tr>
             <tr>
                 <td>
-                    <div class="form-group" style="margin: 5% 0 0 10%; ">
+                    <div style="margin: 5% 0 0 -10%; ">
                         <label>
                             余额：
                             <span style="color:#FFF" ng-bind="detail.Balance">0</span>
@@ -39,7 +40,7 @@
                     </div>
                 </td>
                 <td width="55%">
-                    <div class="form-group" style="margin: 2% 7% 0 0;float:right;">
+                    <div style="margin: 2% 5%;float:right;">
                         @*<a href="/WxPay/Recharge/" class="btn btn-orange"> 充值 </a>*@
                         <a href="/User/UserRecord/" class="btn btn-sm btn-orange"> 历史订单 </a>
                     </div>
@@ -48,24 +49,19 @@
         </table>
     </div>
 
-    <div class="common_content">
-        <div class="user_my_title">
+    <div class="common-content">
+        <div class="common-content-title">
             <img src="~/Image/user/my_title.png" />
         </div>
-
-        <div class="border_header">
-            <img src="~/Image/common/border_header.png" />
-        </div>
-
-        <div class="border_body">
-
-            <table class="table">
+        <div class="border-header"></div>
+        <div class="border-body">
+            <table class="table" >
                 <thead>
                     <tr>
-                        <th class="text-center" width="21%">名次</th>
-                        <th class="text-center" width="27%">姓名</th>
-                        <th class="text-center" width="15%">环数</th>
-                        <th class="text-center" width="35%">射击日期</th>
+                        <th class="text-center">名次</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">环数</th>
+                        <th class="text-center">射击日期</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,16 +73,9 @@
                     </tr>
                 </tbody>
             </table>
-
-            @*<div class="common_button">
-                <a href="/Home/StartGame/"> 查看排行榜 </a>
-            </div>*@
         </div>
-
-        <div class="border_footer">
-            <img src="~/Image/common/border_bottom.png" />
-        </div>
-        <div class="common_footer">
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
             <img src="~/Image/common/logo_footer.png" />
         </div>
     </div>

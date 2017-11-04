@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  shoot.web:
+    image: shoot.web:dev
+    build:
+      args:
+        source: ${DOCKER_BUILD_SOURCE}
+    volumes:
+      - .\SHOOT:C:\inetpub\wwwroot
+      - ~\msvsmon:C:\msvsmon:ro
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=windows"

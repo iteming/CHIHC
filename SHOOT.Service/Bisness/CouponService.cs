@@ -20,6 +20,8 @@ namespace SHOOT.Service.Bisness
         {
             var filter = string.Format(@" RecordID='{0}' ", OrderID);
             var Entity = base.SelectByFilter(filter).FirstOrDefault();
+            if (Entity == null)
+                Entity = new Bis_Coupon();
             return Entity;
         }
 
@@ -100,7 +102,7 @@ namespace SHOOT.Service.Bisness
                     base.Update(Entity);
                     return Common.MessageRes.OperateSuccess.SetResult("SUCCESS");
                 }
-                return Common.MessageRes.OperateFailed.SetResult(null);
+                return "保单信息不存在".SetResult(null);
             }
             catch (Exception ex)
             {

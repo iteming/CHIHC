@@ -4,20 +4,16 @@
 }
 
 <div class="container-fluid">
-    <div class="userbase_logo">
+    <div class="common-logo">
         <img src="~/Image/common/logo_header.png" />
     </div>
-
-    <div class="regist_title">
+    <div class="regist-title">
+        <img src="~/Image/regist/title.png" />
     </div>
 
-    <div class="common_content">
-        <div class="border_header">
-            <img src="~/Image/common/border_header.png" />
-        </div>
-
-        <div class="border_body">
-
+    <div class="common-content">
+        <div class="border-header"></div>
+        <div class="border-body">
             <input id="UserID" type="hidden" value="@USER.UserID" />
             <table class="table-from">
                 <tr>
@@ -39,20 +35,18 @@
                     </td>
                 </tr>
             </table>
-            <div class="form-group-info">
+            <div class="border-group-info" style="position: relative;top: -2rem;">
                 <label>温馨提示：</label>
                 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的个人信息我们将会保密，不做第三方用途，请放心填写。</label>
             </div>
 
-            <a href="javascript:void(0)" onclick="Pager.Submit()" class="common_button">
+            <a href="javascript:void(0)" onclick="Pager.Submit()" class="common-button">
                 下一步
             </a>
         </div>
 
-        <div class="border_footer">
-            <img src="~/Image/common/border_bottom.png" />
-        </div>
-        <div class="common_footer">
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
             <img src="~/Image/common/logo_footer.png" />
         </div>
     </div>
@@ -104,7 +98,7 @@
                             modal.show('@ViewBag.Title', data.msg);
                             return;
                         }
-                        window.location.href = "/Home/Index/";
+                        window.location.href = "/Good/GoodView/";
                     }
                 });
             }
