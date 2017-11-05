@@ -21,7 +21,7 @@
 
 .modal {
     display: none;
-    position: absolute;
+    /*position: absolute;*/
     top: -20%;
     right: 0;
     bottom: 0;

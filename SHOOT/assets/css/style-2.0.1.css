@@ -1,5 +1,5 @@
 ﻿body {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-family: 'Microsoft YaHei';
     color: #f7cc91;
     font-weight: normal;
@@ -21,14 +21,20 @@ img {
     width: 100%;
 }
 
+input[type=checkbox], input[type=radio] {
+    padding: 7% !important;
+    width: auto;
+    opacity: 0.2;
+    background: rgba(213,176,127,0.5);
+}
+
 
 
 /****************
 COMMON CLASS
 ****************/
 .common-logo {
-    height: 6.6rem;
-    width: 15.5rem;
+    width: 50%;
     margin: auto;
     margin-top: 15%;
 }
@@ -69,8 +75,7 @@ USER 页面
 .user-header {
     background: url(/Image/user/header_border.png) no-repeat;
     background-size: 100%;
-    height: 11.5rem;
-    width: 25rem;
+    width: 85%;
     text-align: center;
     margin: auto;
     margin-top: 7%;
@@ -89,7 +94,7 @@ COMMON 内容边框布局页
 ****************/
 .common-content {
     position: relative;
-    width: 25rem;
+    width: 90%;
     text-align: center;
     margin: auto;
     margin-top: 7%;
@@ -149,21 +154,17 @@ INDEX 页面
 }
 
 .index-content {
-    background: url(/Image/index/content.png) no-repeat;
-    background-size: 100%;
-    height: 30rem;
-    width: 25rem;
-    text-align: center;
-    margin: auto;
-    margin-top: 5%;
+    position: relative;
+    margin: 10% auto;
+    width: 90%;
 }
 
     .index-content > a {
-        position: relative;
-        top: 65%;
+        position: absolute;
+        bottom: 15%;
         left: 50%;
-        margin-left: -7.5rem;
-        width: 15rem;
+        margin-left: -20%;
+        width: 40%;
         display: block;
     }
 
@@ -196,21 +197,27 @@ BTN
 ****************/
 .btn-sm {
     padding: 3px 10px;
-    font-size: 12px;
     line-height: 1.5;
     border-radius: 3px;
 }
 
 .btn.btn-orange {
-    color: #fff;
-    background: #9a8866;
-    border-color: #9a8866;
+    color: #000;
+    background: #fdeccb;
+    border-color: #fdeccb;
 }
 
     .btn.btn-orange.active, .btn.btn-orange:active, .btn.btn-orange:focus, .btn.btn-orange:hover, .open .dropdown-toggle.btn-orange {
+        color: #FFF!important;
         background: #f89c1d;
         border-color: #f89c1d;
     }
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
 
 .btn-link {
     padding: 0% 10%;
@@ -255,14 +262,12 @@ COMMON TABLE
 
     .table tr th {
         padding: 0.7rem 0.3rem !important;
-        font-size: 1.0rem;
         background: #3f3221 !important;
         border-bottom: 0.5px solid #A2957A !important;
     }
 
     .table tr td {
         padding: 0.7rem 0.3rem !important;
-        font-size: 1.0rem;
         background: #30261a !important;
         border-top: none !important;
         border-bottom: 0.5px solid #A2957A !important;
@@ -279,7 +284,6 @@ COMMON TABLE
 
     .table-from tr th {
         text-align: center;
-        font-size: 1.0rem;
         background: #3e3121 !important;
         border: 1px solid #f7cc91 !important;
         width: 40%;
@@ -287,11 +291,10 @@ COMMON TABLE
     }
 
     .table-from tr td {
-        font-size: 1.0rem;
         background: #30261a !important;
         border: 1px solid #f7cc91 !important;
         width: 60%;
-        text-align:left;
+        text-align: left;
     }
 
         .table-from tr td input {
@@ -300,6 +303,7 @@ COMMON TABLE
             opacity: 0.2;
             background: rgba(213,176,127,0.1);
         }
+
             .table-from tr td input[type=radio] {
                 width: auto;
             }

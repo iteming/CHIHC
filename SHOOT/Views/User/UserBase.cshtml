@@ -23,15 +23,15 @@
                     </div>
                 </td>
                 <td width="55%">
-                    <div style="margin: 7% 6% 0 0; text-align: left;">
-                        <label>姓名：<span ng-bind="detail.UserName"></span></label>
-                        <label>手机号：<span ng-bind="detail.TelePhone"></span></label>
+                    <div style="margin: 6% 6% 0 0; text-align: left;">
+                        <label style="display: block;">姓名：<span ng-bind="detail.UserName"></span></label>
+                        <label style="display: block;">手机号：<span ng-bind="detail.TelePhone"></span></label>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div style="margin: 5% 0 0 -10%; ">
+                    <div style="margin: 5% 0 10% -10%; ">
                         <label>
                             余额：
                             <span style="color:#FFF" ng-bind="detail.Balance">0</span>
@@ -40,7 +40,7 @@
                     </div>
                 </td>
                 <td width="55%">
-                    <div style="margin: 2% 5%;float:right;">
+                    <div style="margin: -3% 5% 2% 5%;float:right;">
                         @*<a href="/WxPay/Recharge/" class="btn btn-orange"> 充值 </a>*@
                         <a href="/User/UserRecord/" class="btn btn-sm btn-orange"> 历史订单 </a>
                     </div>
