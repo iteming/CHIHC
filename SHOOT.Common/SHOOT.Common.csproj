@@ -33,9 +33,6 @@
     <Reference Include="LitJson">
       <HintPath>..\SHOOT.Lib\LitJson.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SHOOT.Lib\Newtonsoft.Json.dll</HintPath>
@@ -82,9 +79,10 @@
     <Compile Include="WxPay\Lib\WxPayConfig.cs" />
     <Compile Include="WxPay\Lib\WxPayData.cs" />
     <Compile Include="WxPay\Lib\WxPayException.cs" />
+    <Compile Include="WxShare\JsApiShare.cs" />
+    <Compile Include="WxShare\Lib\ShareUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="WxPay\cert\apiclient_cert.p12" />
   </ItemGroup>
   <ItemGroup>

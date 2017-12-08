@@ -68,7 +68,7 @@ namespace SHOOT.Service.Bisness
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        public List<Dto_Rank> GetRankList(string UserID)
+        public List<Dto_Rank> GetRankList(string UserID, int PageIndex = 0, int PageSize = 10)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace SHOOT.Service.Bisness
                     };
                     resultList.Insert(0, newEntity);
                 }
-                return resultList;
+                return resultList.Skip(PageIndex * PageSize).Take(PageSize).ToList();
             }
             catch (Exception ex)
             {

@@ -225,7 +225,12 @@ namespace SHOOT.Service.Bisness
                 }
                 if (base.Insert(recordEntity))
                 {
-                    if (new RecordDetailService().Insert(recordDetail))
+                    if (recordDetail.Count > 0)
+                    {
+                        if (new RecordDetailService().Insert(recordDetail))
+                            return Common.MessageRes.OperateSuccess.SetResult<Bis_Record>(recordEntity);
+                    }
+                    else
                         return Common.MessageRes.OperateSuccess.SetResult<Bis_Record>(recordEntity);
                 }
                 return Common.MessageRes.OperateFailed.SetResult<Bis_Record>(null);
@@ -276,7 +281,8 @@ namespace SHOOT.Service.Bisness
         private string CreateOrderDesc(Common.Order_Type OType, Bis_Gift GiftEntity, decimal? Amount)
         {
             if (OType == Common.Order_Type.Consume)
-                return string.Format(@"【中猎国际俱乐部】商品名称：{0}, 商品描述：{1}", GiftEntity.GiftName, GiftEntity.Description);
+                return string.Format(@"【中猎国际俱乐部】商品名称：{0}，商品描述：{1}", GiftEntity.GiftName, GiftEntity.Description);
+                //return string.Format(@"【中猎国际俱乐部】<br/>商品名称：{0} <br/> 商品描述：{1}", GiftEntity.GiftName, GiftEntity.Description);
             else
                 return string.Format(@"【中猎国际俱乐部】充值金额：{0}", Amount);
         }
@@ -306,12 +312,13 @@ namespace SHOOT.Service.Bisness
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        public List<Bis_Record> GetOrderList(string UserID)
+        public List<Bis_Record> GetOrderList(string UserID, int PageIndex = 0, int PageSize = 10)
         {
             try
             {
-                var filter = string.Format(@" UserID='{0}' ", UserID);
-                var recordList = base.SelectByFilter(filter, " CreateTime ");
+                var filter = string.Format(@" UserID='{0}' AND (Status!='{1}' OR (Status='{1}' AND CreateTime >= '{2}' ))", 
+                    UserID, (int)Common.Order_Status.NotPay, DateTime.Now.AddMinutes(-15).ToString("yyyy-MM-dd HH:mm:ss"));
+                var recordList = base.SelectByFilter(filter, " CreateTime DESC ");
                 if (recordList == null)
                     return new List<Bis_Record>();
 
@@ -319,7 +326,7 @@ namespace SHOOT.Service.Bisness
 	            {
                     item.StatusName = SetStatusName(item.Status);
 	            }
-                return recordList;
+                return recordList.Skip(PageIndex * PageSize).Take(PageSize).ToList();
             }
             catch (Exception ex)
             {

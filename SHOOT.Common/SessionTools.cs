@@ -9,6 +9,15 @@ namespace SHOOT.Common
 {
     public static class SessionTools
     {
+        public static void SetSession(string key, object value)
+        {
+            HttpContext.Current.Session[key] = value;
+        }
+        public static object GetSession(string key)
+        {
+            return HttpContext.Current.Session[key];
+        }
+
         public static string UserID
         {
             get
