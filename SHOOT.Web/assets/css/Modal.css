@@ -1,0 +1,99 @@
+﻿
+/**动画 模态窗口*******/
+.modal-wrap {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0;
+    z-index: 3;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity .3s linear;
+}
+
+    .modal-wrap.in {
+        bottom: 0;
+        opacity: 0.6;
+        height: auto;
+    }
+
+.modal {
+    display: none;
+    /*position: absolute;*/
+    top: -20%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    color: #000;
+}
+
+    .modal .modal-header {
+        min-height: 16.43px;
+        padding: 5px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .modal .panel-body {
+        padding: 5px;
+        border: none;
+    }
+
+    .modal .modal-footer {
+        padding: 10px 5px;
+        border-top: none;
+    }
+
+
+    .modal .modal-dialog {
+        width: 70%;
+        margin: 90% auto 0;
+        padding: 0 10px;
+        background-color: #FFF;
+        opactiy: .5;
+        transition: opactiy ease .3s;
+        border-radius: 3px;
+    }
+
+    .modal .modal-html-dialog {
+        width: 70%;
+        margin: 5% auto 5%;
+        padding: 0 10px;
+        background-color: #FFF;
+        opactiy: .5;
+        transition: opactiy ease .3s;
+        border-radius: 3px;
+    }
+
+    .modal.in .modal-dialog,
+    .modal.in .modal-html-dialog {
+        opactiy: 1;
+    }
+
+.modal-dialog .modal-title,
+.modal-html-dialog .modal-title {
+    text-align: center;
+    line-height: 3.5rem;
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+.modal-dialog .modal-msg,
+.modal-html-dialog .modal-msg {
+    line-height: 3rem;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+.modal-dialog .modal-html,
+.modal-html-dialog .modal-html {
+    line-height: 1.3rem;
+    padding-bottom: 1rem;
+}
+
+.modal-dialog .modal-footer .btn,
+.modal-html-dialog .modal-footer .btn {
+    font-size: 1.1rem;
+}

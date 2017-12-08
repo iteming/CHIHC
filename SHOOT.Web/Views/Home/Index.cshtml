@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "首页";
+}
+@section styles {
+    <style>
+        .container-fluid {
+            background: url(/Image/index/bg.png) repeat;
+            background-size: 100%;
+            height: 100%;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="common-logo">
+        <img src="~/Image/common/logo_header.png" />
+    </div>
+
+    <div class="index-title">
+        <img src="~/Image/index/title.png" />
+    </div>
+    @*<a href="javascript:void(0)" onclick="jsApiCall()" class="common-button">
+        分享给好友
+    </a>*@
+    <div class="index-content">
+        <img src="~/Image/index/content.png" />
+        <a href="/Home/StartGame/">
+            <img src="~/Image/index/join.png" />
+        </a>
+    </div>
+</div>
+
+@section scripts {
+    @*<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，
+            //若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '@ViewBag.appid', // 必填，公众号的唯一标识
+            timestamp: '@ViewBag.ts', // 必填，生成签名的时间戳
+            nonceStr: '@ViewBag.ns', // 必填，生成签名的随机串
+            signature: '@ViewBag.sign',// 必填，签名，见附录1
+            jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+    </script>
+    <script>
+        var shareData = {
+            title: '微信公众平台开发实践',
+            desc: '本书共分10章，案例程序采用广泛流行的PHP、MySQL、XML、CSS、JavaScript、HTML5等程序语言及数据库实现。',
+            link: 'http://mp.iteming.wang/',
+            imgUrl: 'http://demo.open.weixin.qq.com/jssdk/images/p2166127561.jpg',
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        };
+        wx.ready(function () {
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            wx.onMenuShareAppMessage(shareData);
+            wx.onMenuShareTimeline(shareData);
+        });
+        wx.error(function (res) {
+            alert(res.errMsg);
+        });
+    </script>
+    <script>
+        function jsApiCall() {
+            WeixinJSBridge.invoke('shareTimeline', shareData);
+        }
+    </script>*@
+}

@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{901A12D4-B6B4-4E83-BD2E-A019D67AC391}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SHOOT.Web</RootNamespace>
+    <AssemblyName>SHOOT.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LitJson, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SHOOT.Lib\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\menu.css" />
+    <Content Include="assets\css\Modal.css" />
+    <Content Include="assets\css\style-1.5.0.css" />
+    <Content Include="assets\js\CustomValidate.js" />
+    <Content Include="assets\js\fileUpload.js" />
+    <Content Include="assets\js\jquery.cookie.js" />
+    <Content Include="assets\js\jquery.tablescroll.js" />
+    <Content Include="assets\js\qrcode.js" />
+    <Content Include="assets\plugins\angular\angular.min.js" />
+    <Content Include="assets\plugins\angular\angular_ie8.min.js" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\css\bootstrap-theme.css" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\css\bootstrap-theme.min.css" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\css\bootstrap.css" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\css\bootstrap.min.css" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\js\bootstrap.js" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\js\bootstrap.min.js" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\js\npm.js" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\css\font-awesome.css" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\css\font-awesome.min.css" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\plugins\jquery-1.9.1\jquery-1.9.1.js" />
+    <Content Include="assets\plugins\jquery-1.9.1\jquery-1.9.1.min.js" />
+    <Content Include="assets\plugins\parsley\css\parsley.css" />
+    <Content Include="assets\plugins\parsley\js\parsley.js" />
+    <Content Include="Global.asax" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\css\bootstrap-theme.css.map" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\css\bootstrap.css.map" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\plugins\bootstrap-3.3.4\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\fonts\FontAwesome.otf" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\bordered-pulled.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\core.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\fixed-width.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\font-awesome.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\icons.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\larger.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\list.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\mixins.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\path.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\rotated-flipped.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\spinning.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\stacked.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\less\variables.less" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\font-awesome.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_bordered-pulled.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_core.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_fixed-width.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_icons.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_larger.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_list.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_mixins.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_path.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_rotated-flipped.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_spinning.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_stacked.scss" />
+    <Content Include="assets\plugins\font-awesome-4.1.0\scss\_variables.scss" />
+    <Content Include="assets\css\style-2.0.1.css" />
+    <None Include="Properties\PublishProfiles\中猎国际全民射击.pubxml" />
+    <Content Include="Image\common\bg.png" />
+    <Content Include="Image\common\border_bottom.png" />
+    <Content Include="Image\common\border_header.png" />
+    <Content Include="Image\common\border_middle.png" />
+    <Content Include="Image\common\btn.png" />
+    <Content Include="Image\common\logo_footer.png" />
+    <Content Include="Image\common\logo_header.png" />
+    <Content Include="Image\gift\gift_03.png" />
+    <Content Include="Image\gift\gift_06.png" />
+    <Content Include="Image\gift\gift_09.png" />
+    <Content Include="Image\gift\title.png" />
+    <Content Include="Image\index\bg.png" />
+    <Content Include="Image\index\content.png" />
+    <Content Include="Image\index\join.png" />
+    <Content Include="Image\index\title.png" />
+    <Content Include="Image\recharge\btn.png" />
+    <Content Include="Image\recharge\gift_10.png" />
+    <Content Include="Image\recharge\title.png" />
+    <Content Include="Image\regist\btn.png" />
+    <Content Include="Image\regist\title.png" />
+    <Content Include="Image\user\btn.png" />
+    <Content Include="Image\user\header_border.png" />
+    <Content Include="Image\user\my_title.png" />
+    <Content Include="Image\user\my_title_01.png" />
+    <Content Include="Image\user\my_title_02.png" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Regist\RegistView.cshtml" />
+    <Content Include="Views\Good\GoodView.cshtml" />
+    <Content Include="Views\Order\OrderView.cshtml" />
+    <Content Include="Views\Order\Success.cshtml" />
+    <Content Include="Views\User\UserBase.cshtml" />
+    <Content Include="WxPay\cert\apiclient_cert.p12" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GoodController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\RegistController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WxPayController.cs" />
+    <Compile Include="Utils\AttributeDefine.cs" />
+    <Compile Include="Utils\UserAuthorFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\User\UserRecord.cshtml" />
+    <Content Include="Views\WxPay\Recharge.cshtml" />
+    <Content Include="Views\WxPay\Default.cshtml" />
+    <Content Include="Views\Order\SetInsurance.cshtml" />
+    <Content Include="Views\User\EnterPassword.cshtml" />
+    <Content Include="Views\User\EnterRank.cshtml" />
+    <Content Include="Views\User\EnterRefund.cshtml" />
+    <Content Include="Views\User\EnterRefundApply.cshtml" />
+    <Content Include="Views\User\ValidateRefund.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout2.0.cshtml" />
+    <Content Include="Views\User\EnterRefundSuccess.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SHOOT.Common\SHOOT.Common.csproj">
+      <Project>{3a1ce633-470e-46cf-9cfa-57d55dbed4de}</Project>
+      <Name>SHOOT.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SHOOT.Model\SHOOT.Model.csproj">
+      <Project>{79d3eb19-518b-4361-9cbf-44b8dadaae22}</Project>
+      <Name>SHOOT.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SHOOT.Service\SHOOT.Service.csproj">
+      <Project>{047685a4-aa54-4b17-a2f6-6d8a91e5f769}</Project>
+      <Name>SHOOT.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>32617</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8091/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "提交订单";
+}
+
+@section styles {
+    <style>
+        .order-header div {
+            width: 85%;
+            margin: 0 auto 3% auto;
+        }
+            .order-header div > img {
+                width: 100%;
+            }
+    </style>
+}
+
+<div class="container-fluid" ng-app="list1" ng-controller="list1Ctrl">
+    <div class="common-logo">
+        <img src="~/Image/common/logo_header.png" />
+    </div>
+
+    <div class="order-header">
+        <div style="border: 1px solid #e8bf7b; border-radius:6px; padding: 10px; ">
+            <img ng-src='{{detail.ImgPath?detail.ImgPath:"#"}}' />
+        </div>
+        @*<div class="common-group-info m-t-10">
+            <label>礼包详情：
+                <span style="color:#FFF" ng-bind="detail.Description"></span>
+            </label>
+        </div>*@
+    </div>
+
+    <div class="common-content">
+        <div class="border-header"></div>
+        <div class="border-body">
+            @*<table class="table" style="position:relative;top:-2rem;">
+                <thead>
+                    <tr>
+                        <th class="text-center"></th>
+                        <th class="text-center">商品名称</th>
+                        <th class="text-center">金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in lists" ng-click="Pager.CheckItem($index)" style="cursor:pointer">
+                        <td class="text-center">
+                            <input type="radio" name="radioType3" ng-show="item.CanCheck&&item.Type==3"
+                                   ng-value="$index" ng-model="radioModel" />
+                            <input type="checkbox" ng-show="item.CanCheck&&item.Type!=3"
+                                   ng-true-value="true" ng-false-value="false" ng-model="item.IsChecked" />
+                        </td>
+                        <td class="text-center"><span ng-bind="item.GoodName"></span></td>
+                        <td class="text-center"><span ng-bind="item.Price"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="border-group-info" style="position:relative;top:-1rem;">
+                <label>共计金额：<span style="color:#FFF" ng-bind="detail.Price"></span> 元</label>
+            </div>*@
+            
+            <div class="border-group-info" style="position: relative;top: -2rem;">
+                <label style="vertical-align: top;">礼包详情：</label>
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="span-text" ng-bind-html="detail.Description| to_trusted"></span>
+                </label>
+            </div>
+            @*<div class="border-group-info" style="position:relative;top:-1rem;">
+                <label style="display:inline">支付方式：</label>
+                <label class="radio-inline">
+                    <input type="radio" name="paymentType" class="m-t-5" checked /> 微信支付
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="paymentType" class="m-t-5" />  支付宝支付
+                </label>
+            </div>*@
+            <a href="javascript:void(0)" ng-click="Pager.SubmitOrder()" 
+               class="common-button"> 确认支付 </a>
+            @*<a href="/Good/GoodView" class="common-button m-t-10"> 上一步 </a>*@
+        </div>
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
+            <img src="~/Image/common/logo_footer.png" />
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/assets/plugins/angular/angular.min.js"></script>
+    <script>
+        var app1 = angular.module('list1', []);
+        app1.filter('to_trusted', ['$sce', function ($sce) {
+            return function (text) {
+                return $sce.trustAsHtml(text);
+            };
+        }]);
+        app1.controller('list1Ctrl', ['$scope', function ($scope) {
+            $scope.detail = @MvcHtmlString.Create(ViewBag.GiftDetail)
+            $scope.lists = [];
+            $scope.radioModel = undefined;
+            $scope.gunCount = 0;
+
+            var Pager = {
+                CheckItem: function (index) {
+                    var item = $scope.lists[index];
+                    if (!item.CanCheck) {
+                        return;
+                    }
+
+                    // radio 选中
+                    if (item.Type == 3) {
+                        $scope.radioModel = index;
+                        return;
+                    }
+                    
+                    // checkbox 选中
+                    if (item.IsChecked) {
+                        $scope.gunCount -= 1;
+                        item.IsChecked = false;
+                    } else {
+                        if ($scope.gunCount >= $scope.detail.Type1Count) {
+                            modal.show('@ViewBag.Title', "最多选择" + $scope.detail.Type1Count + "把");
+                            return;
+                        }
+                        $scope.gunCount += 1;
+                        item.IsChecked = true;
+                    } 
+                },
+                GetGoodData: function () {
+                    $scope.lists = [];
+                    $.ajax({
+                        url: "/Order/GetGoodData",
+                        type: "post",
+                        dataType: "json",
+                        data: { jsonData: JSON.stringify($scope.detail) },
+                        success: function (data) {
+                            if (data.status == 0) {
+                                modal.show('@ViewBag.Title', data.msg);
+                                return;
+                            }
+                            $scope.lists = data.data;
+                            $scope.$apply();
+                        }
+                    });
+                },
+                SubmitOrder: function () {
+                    @*var type1Checked = false;
+                    for (var i = 0; i < $scope.lists.length; i++) {
+                        if ($scope.lists[i].Type == 1 && $scope.lists[i].IsChecked) {
+                            type1Checked = true;
+                            break;
+                        }
+                    }
+                    if (!type1Checked) {
+                        modal.show('@ViewBag.Title', "请选择枪械");
+                        return;
+                    }
+
+                    if ($scope.radioModel == undefined) {
+                        modal.show('@ViewBag.Title', "请选择射击距离");
+                        return;
+                    }
+                    var item = $scope.lists[$scope.radioModel];
+                    item.IsChecked = true;*@
+
+                    $.ajax({
+                        url: "/Order/SubmitOrder",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            GiftJsonData: JSON.stringify($scope.detail),
+                            GoodJsonData: JSON.stringify($scope.lists)
+                        },
+                        success: function (data) {
+                            if (data.status == 0) {
+                                modal.show('@ViewBag.Title', data.msg);
+                                return;
+                            }
+                            window.location.href = "/WxPay/WxPayReady?IdAmount=" + data.data.RecordID;
+                        }
+                    });
+                }
+            }
+
+            $scope.Pager = Pager;
+            //Pager.GetGoodData();
+        }]);
+    </script>
+}

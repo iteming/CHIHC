@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "录入成绩";
+}
+
+<div class="container-fluid">
+    <div class="common-logo">
+        <img src="~/Image/common/logo_header.png" />
+    </div>
+
+    <div class="common-header">
+        请录入射击成绩
+    </div>
+
+    <div class="common-content">
+        <div class="border-header"></div>
+        <div class="border-body">
+            <table class="table-from">
+                <tr>
+                    <th>射击成绩</th>
+                    <td>
+                        <input id="Score" type="text" placeholder="请输入射击成绩" />
+                    </td>
+                </tr>
+            </table>
+            <div class="border-group-info" style="position: relative;top: -2rem;">
+                <label>温馨提示：</label>
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    请填写真实的射击成绩，自觉遵守活动规则，谢谢合作。
+                </label>
+            </div>
+
+            <a href="javascript:void(0)" onclick="Pager.Submit()"
+               class="common-button">提　　交</a>
+            <a href="/Order/Success?OrderID=@ViewBag.OrderID"
+               class="common-button m-t-10">取　　消</a>
+        </div>
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
+            <img src="~/Image/common/logo_footer.png" />
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        var Pager = {
+            Submit: function () {
+                $.ajax({
+                    url: "/User/SubmitScore",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        OrderID: '@ViewBag.OrderID',
+                        Score: $("#Score").val()
+                    },
+                    success: function (data) {
+                        if (data.status == 0) {
+                            modal.show('@ViewBag.Title', data.msg);
+                            return;
+                        }
+                        window.location.href = "/User/UserBase";
+                    }
+                });
+            }
+        }
+    </script>
+}

@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "我的主页";
+}
+@section styles {
+    <style>
+        .focus {
+            border: 1px solid #ff0000 !important;
+            background-color: #ff6a00;
+        }
+    </style>
+}
+<div class="container-fluid" ng-app="list1" ng-controller="list1Ctrl">
+    <div class="user-logo">
+        @*<img src="~/Image/common/logo_header.png" />*@
+        <div class="border-group-info">
+            <label style="vertical-align: top; border: 1px #856b47 solid; border-radius: 10px; padding-left:10px;">温馨提示：</label>
+            <label @*style="margin-left: 10px;"*@>
+                <span>
+                    <div>
+                        "射击排行" 中的排名仅作参考，<br />不作为 "全民射击" 比赛评判依据！
+                    </div>
+                </span>
+            </label>
+        </div>
+    </div>
+
+    <div class="user-header" style="margin-top: 13%;">
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <img ng-src='{{detail.HeaderUrl?detail.HeaderUrl:"#"}}' />
+                    </div>
+                </td>
+                <td width="55%">
+                    <div style="margin: 6% 6% 0 0; text-align: left;">
+                        <label style="display: block;">姓名：<span ng-bind="detail.UserName"></span></label>
+                        <label style="display: block;">电话：<span ng-bind="detail.TelePhone"></span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin: 5% 0 10% -10%; ">
+                        <label>
+                            余额：
+                            <span style="color:#FFF" ng-bind="detail.Balance">0</span>
+                            元
+                        </label>
+                    </div>
+                </td>
+                <td width="55%">
+                    <div style="margin: -3% 5% 2% 5%;float:right;">
+                        @*<a href="/WxPay/Recharge/" class="btn btn-orange"> 充值 </a>*@
+                        <a href="/User/UserRecord/" class="btn btn-sm btn-orange"> 历史订单 </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="common-content">
+        <div class="common-content-title">
+            <img src="~/Image/user/my_title_02.png" />
+        </div>
+        <div class="border-header"></div>
+        <div class="border-body">
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th class="text-center">名次</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">环数</th>
+                        <th class="text-center">射击日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in lists" ng-class='{focus: item.Focus}'>
+                        <td class="text-center"><span ng-bind="item.Rank"></span></td>
+                        <td class="text-center"><span ng-bind="item.UserName"></span></td>
+                        <td class="text-center"><span ng-bind="item.Score"></span></td>
+                        <td class="text-center"><span ng-bind="item.CreateTime"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="border-footer"></div>
+        <div class="common-content-footer">
+            <img src="~/Image/common/logo_footer.png" />
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/assets/plugins/angular/angular.min.js"></script>
+    <script>
+        var app1 = angular.module('list1', []);
+        app1.controller('list1Ctrl', ['$scope', function ($scope) {
+            $scope.detail = @MvcHtmlString.Create(ViewBag.User)
+            $scope.lists = @MvcHtmlString.Create(ViewBag.RankList)
+            $scope.tmp = undefined;
+
+            var Pager = {
+                Cancel: function () {
+                    window.location.href = "/User/UserRecord/";
+                }
+            }
+            $scope.Pager = Pager;
+        }]);
+    </script>
+}

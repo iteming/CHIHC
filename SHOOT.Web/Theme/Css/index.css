@@ -1,0 +1,592 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+  color: #333;
+  font-size: 1.4rem;
+  background: #f1f2f6;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body,
+ul,
+li,
+p,
+nav,
+footer,
+section,
+header,
+article,
+div,
+dl,
+dt,
+dd,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+img,
+em,
+cite,
+table,
+td,
+th {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-appearance: none;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+}
+ul,
+li,
+dt,
+dd,
+ol {
+  list-style: none;
+}
+img {
+  border: 0px;
+}
+div {
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  outline: none;
+  -moz-outline-style: none;
+}
+a:active {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  text-decoration: none;
+  color: #333;
+}
+a:visited {
+  text-decoration: none;
+  color: #333;
+}
+a:link {
+  text-decoration: none;
+  color: #333;
+}
+@media only screen and (min-width: 481px) {
+  html {
+    font-size: 94% !important;
+    /* 15.04÷16=94% */
+  }
+}
+@media only screen and (min-width: 561px) {
+  html {
+    font-size: 109% !important;
+    /* 17.44÷16=109% */
+  }
+}
+@media only screen and (min-width: 641px) {
+  html {
+    font-size: 125% !important;
+    /* 20÷16=125% */
+  }
+}
+.font14 {
+  font-size: 1.4rem;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.main {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+  margin-top: 5rem;
+  border-top: 1px solid #dddddd;
+}
+.main h2.noshow {
+  width: 100%;
+  color: #999999;
+  text-align: center;
+  line-height: 10rem;
+}
+.main h2.noshow > img {
+  display: block;
+  width: 50%;
+  margin: 0 25%;
+  margin-top: 20%;
+}
+.main span.noshow {
+  display: block;
+  width: 100%;
+  color: #999999;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 3rem;
+}
+.hidbg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 0;
+  z-index: 101;
+  background: #333;
+  -moz-opacity: 0.6;
+  opacity: .60;
+  filter: alpha(opacity=60);
+  /* 只支持IE6、7、8、9 */
+}
+/*背景色*/
+/*字体颜色*/
+/*边框色*/
+/*弹窗*/
+.tiplayer {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 7.5rem;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  z-index: 100000;
+}
+.tiplayer .tipbox {
+  max-width: 70%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
+  text-align: center;
+  margin: 0 auto;
+  top: 35%;
+  position: relative;
+  overflow: hidden;
+  padding-top: 1.5rem;
+}
+.tiplayer .tipbox .tipclose {
+  position: absolute;
+  right: 0.1rem;
+  top: 0;
+  font-size: 3rem;
+  color: #666;
+  line-height: 2rem;
+}
+.tiplayer .tipbox dl dt {
+  margin: 8% 0 5%;
+}
+.tiplayer .tipbox dl dt img {
+  width: 25%;
+}
+.tiplayer .tipbox dl .text {
+  font-size: 1.6rem;
+}
+.tiplayer .tipbox dl dd {
+  width: 100%;
+  text-align: center;
+}
+.tiplayer .tipbox dl dd.title {
+  font-size: 1.6rem;
+}
+.tiplayer .tipbox dl dd.btn {
+  font-size: 0;
+  display: block;
+  padding-top: 2rem;
+}
+.tiplayer .tipbox dl dd .tipbtn {
+  font-size: 1.6rem;
+  display: block;
+  width: 50%;
+  color: #000;
+  border-top: 1px solid #dddddd;
+  line-height: 4rem;
+}
+.tiplayer .tipbox dl dd .tipbtn:hover {
+  background: #686868;
+  color: #fff;
+}
+.tiplayer .tipbox dl dd .tipOk {
+  float: right;
+  background: #388fe9;
+  border-top: 1px solid #388fe9;
+  color: #fff;
+}
+.tiplayer .tipbox dl dd .tipCancel {
+  float: left;
+}
+.head {
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  background: #59a5f3;
+  padding: 1rem 0;
+  border-bottom: 1px solid #dddddd;
+}
+.head input {
+  width: 16rem;
+  float: left;
+  height: 3rem;
+  background: #fff;
+  padding: 0 1.5rem;
+  outline: none;
+  position: relative;
+  left: 3rem;
+  font-size: 1.4rem;
+  color: #999999;
+}
+.head .title {
+  width: 100%;
+  display: block;
+  height: 3rem;
+  line-height: 3rem;
+  top: 0;
+  text-align: center;
+  font-size: 1.8rem;
+}
+.head .proDetail {
+  width: 70%;
+  height: 3rem;
+  display: block;
+  line-height: 3rem;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  overflow: visible;
+}
+.head .proDetail > a {
+  float: left;
+  width: 28%;
+  margin: 0 2%;
+  text-align: center;
+}
+.head .proDetail > a.on {
+  color: #388fe9;
+  position: relative;
+}
+.head .proDetail > a.on:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #388fe9;
+  position: absolute;
+  left: 0;
+  bottom: -1.1rem;
+}
+.head span.backbtn {
+  display: inline-block;
+  width: 1.4rem;
+  height: 2.8rem;
+  background: url(../../Images/backbtn.png) no-repeat;
+  background-size: 1.4rem 2.8rem;
+  margin-left: 1rem;
+  position: absolute;
+  z-index: 1000;
+}
+.head i {
+  width: 3rem;
+  height: 3rem;
+  float: left;
+  position: absolute;
+  z-index: 1000;
+}
+.head i.ileft {
+  left: 1.2rem;
+}
+.head i.iright {
+  left: 20.9rem;
+}
+.head a {
+  float: right;
+}
+.head a > img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.main .topSubmitbtn {
+  width: 90%;
+  margin: 2rem 5%;
+  display: block;
+  background: #388fe9;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 4rem;
+  border-radius: 0.5rem;
+}
+.bottom {
+  width: 100%;
+  height: 5.5rem;
+  margin: 0 auto;
+  line-height: 2.2em;
+  background: #fff;
+  border-top: 1px solid #dddddd;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  font-size: 1.4rem;
+}
+.bottom li {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+.bottom li a {
+  margin-top: 0.8rem;
+  width: 100%;
+  display: block;
+  padding-top: 1.8rem;
+}
+.bottom li a.on {
+  color: #388fe9;
+}
+.head {
+  border-bottom: none;
+}
+.banners {
+  width: 100%;
+  height: 13rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  background: #fff;
+}
+.banners img {
+  width: 100%;
+}
+.banners .swiper-wrapper {
+  overflow: visible;
+}
+.swiper-pagination {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: -2rem;
+}
+.menus {
+  width: 100%;
+  height: 7rem;
+  margin: 0 auto;
+  background: #fff;
+  padding-top: 1rem;
+  margin-bottom: 0.85rem;
+  font-size: 1.4rem;
+}
+.menus li {
+  width: 24.5%;
+  float: left;
+  list-style: none;
+  height: 7rem;
+  text-align: center;
+}
+.menus li a {
+  width: 100%;
+  display: block;
+  padding-top: 4.5rem;
+}
+.main {
+  margin-top: 0.85rem;
+  border-top: none;
+}
+.main .main_top {
+  width: 100%;
+  height: 16rem;
+  margin: 0 auto;
+  background: #fff;
+  margin-bottom: 0.85rem;
+}
+.main .main_top .color1 {
+  color: #388fe9;
+}
+.main .main_top .color2 {
+  color: #f56b55;
+}
+.main .main_top .color3 {
+  color: #f2a207;
+}
+.main .main_top .mtop_left {
+  width: 50%;
+  height: 16rem;
+  float: left;
+  border-right: 1px solid #dddddd;
+}
+.main .main_top .mtop_left img {
+  float: left;
+  width: 80%;
+  margin: 0 10%;
+}
+.main .main_top .mtop_left .mtop-title {
+  margin: 10% 0 0 10%;
+}
+.main .main_top .mtop_right {
+  width: 49%;
+  height: 8rem;
+  float: left;
+}
+.main .main_top .mtop_right .mtop-title {
+  margin: 5% 0 5% 5%;
+  width: 50%;
+  float: left;
+}
+.main .main_top .mtop_right img {
+  width: 40%;
+  float: left;
+  margin-top: 1.5rem;
+}
+.main .main_top .mtop-title span {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+}
+.main .main_top .mtop-title p {
+  color: #a1a1a1;
+}
+.main .main_list {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background: #fff;
+  margin-bottom: 0.85rem;
+}
+.main .main_list span.mlist_top {
+  height: 3.6rem;
+  width: 100%;
+  display: block;
+  line-height: 3.6rem;
+  font-size: 1.6rem;
+  border-bottom: 1px solid #dddddd;
+  position: relative;
+  padding-left: 2rem;
+}
+.main .main_list span.mlist_top span:after {
+  content: "";
+  position: absolute;
+  width: 0.3rem;
+  height: 1.65rem;
+  background: #388fe9;
+  left: 0.9rem;
+  top: 1rem;
+}
+.main .main_list .mlist_djjs {
+  width: 100%;
+  margin: 0 auto;
+}
+.main .main_list .mlist_djjs li {
+  width: 33%;
+  float: left;
+  border-right: 1px solid #dddddd;
+  margin-bottom: 0.85rem;
+}
+.main .main_list .mlist_djjs li img {
+  width: 90%;
+  padding: 5%;
+  background: #fff;
+}
+.main .main_list .mlist_djjs li p {
+  width: 95%;
+  overflow: hidden;
+  height: 2.5rem;
+  font-size: 1.4rem;
+  display: block;
+  padding-left: 0.5rem;
+  line-height: 2.5rem;
+}
+.main .main_list .mlist_djjs li span {
+  display: block;
+  float: left;
+  line-height: 2.5rem;
+}
+.main .main_list .mlist_djjs li .money_now {
+  font-size: 1.6rem;
+  position: relative;
+  padding-left: 1rem;
+  margin-left: 5%;
+  color: #ff8c05;
+}
+.main .main_list .mlist_djjs li .money_now:after {
+  content: "￥";
+  position: absolute;
+  left: -0.2rem;
+  top: 0.1rem;
+  font-size: 1.4rem;
+}
+.main .main_list .mlist_djjs li .money_old {
+  text-decoration: line-through;
+  color: #999999;
+  font-size: 1rem;
+  float: right;
+  margin-right: 5%;
+}
+.main .main_list .mlist_djjs li:last-child {
+  border-right: none;
+}
+.main .main_list .mlist_products {
+  width: 100%;
+  margin: 0 auto;
+  float: left;
+}
+.main .main_list .mlist_products li {
+  width: 49.7%;
+  float: left;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 0.85rem;
+}
+.main .main_list .mlist_products li img {
+  width: 90%;
+  padding: 5%;
+  background: #fff;
+}
+.main .main_list .mlist_products li p {
+  width: 95%;
+  overflow: hidden;
+  height: 4rem;
+  font-size: 1.4rem;
+  display: block;
+  padding-left: 0.5rem;
+  line-height: 2rem;
+}
+.main .main_list .mlist_products li span {
+  display: block;
+  float: left;
+  line-height: 2.5rem;
+  margin-left: 0.5rem;
+}
+.main .main_list .mlist_products li .money_now {
+  font-size: 1.6rem;
+  position: relative;
+  padding-left: 1rem;
+  margin-left: 5%;
+  color: #ff8c05;
+}
+.main .main_list .mlist_products li .money_now:after {
+  content: "￥";
+  position: absolute;
+  left: -0.2rem;
+  top: 0.1rem;
+  font-size: 1.4rem;
+}
+.main .main_list .mlist_products li .money_old {
+  color: #999999;
+  float: right;
+  margin-right: 0.5rem;
+}
+.main .main_list .mlist_products li.nomar {
+  border-right: none;
+}
