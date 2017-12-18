@@ -34,7 +34,7 @@ namespace SHOOT.Common
         private static string SendSMS2(string tel, string str, string strCode)
         {
             string strRetstring = "";
-            string KEY = "SxJzYSms2@.#%";
+            string KEY = "SXJZYSms2@.#%";
             string sign = MD5Helper.getMd5Hash("gxcx" + tel + strCode + KEY);
             string postStrTpl = "id=gxcx&Sign=" + sign + "&tel={0}&message=";
 
