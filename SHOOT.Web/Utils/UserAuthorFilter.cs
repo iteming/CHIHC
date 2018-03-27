@@ -64,11 +64,19 @@ namespace SHOOT.Utils
                             PayConfig.WxAppid(), redirect_uri);
                         filterContext.HttpContext.Response.Redirect(url);
                         filterContext.HttpContext.Response.End();
+                        filterContext.Result = new EmptyResult();
                         return string.Empty;
                     }
 
                     // CODE 不为空，则根据 code获取用户信息，并注册
                     var User = Registered(code);
+                    if (User == null)
+                    {
+                        // 如果User为空，则注册失败，因此不应该继续执行Action内的逻辑
+                        filterContext.HttpContext.Response.End();
+                        filterContext.Result = new EmptyResult();
+                        return string.Empty;
+                    }
 
                     //// 用户手机号不存在则跳转至完善注册信息界面
                     //if (User != null && string.IsNullOrEmpty(User.TelePhone))
